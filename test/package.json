@@ -1,0 +1,13 @@
+{
+  "name": "shift-signal-tests",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Verification suite for the Shift Signal engagement instrument",
+  "scripts": {
+    "lint": "node build-check.js && node --check check.js && echo syntax-ok",
+    "logic": "node build-check.js && node harness.js",
+    "e2e": "node e2e.js",
+    "test": "npm run lint && npm run logic && npm run e2e"
+  },
+  "devDependencies": { "playwright": "^1.63.0" }
+}

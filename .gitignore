@@ -1,0 +1,7 @@
+node_modules/
+package-lock.json
+test/check.js
+test/screenshots/
+test/seed.json
+*.png
+.DS_Store
