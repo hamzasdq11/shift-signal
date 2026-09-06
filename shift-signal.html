@@ -8,8 +8,8 @@
    SHIFT SIGNAL — engagement measurement instrument
    Tokens: light palette on bare :root, redefined for both
    dark states. Every colour comes from a token.
-   Series hues validated (CVD/chroma/lightness/contrast) for
-   both surfaces: A #00897B / #2FA89A · B #BC8419 / #BD8817
+   Series hue validated (CVD/chroma/lightness/contrast) for both
+   surfaces: #00897B / #2FA89A
    ───────────────────────────────────────────────────────────── */
 :root {
   color-scheme: light;
@@ -24,9 +24,6 @@
   --a:         #00897B;
   --a-ink:     #006056;
   --a-soft:    rgba(0,137,123,.11);
-  --b:         #BC8419;
-  --b-ink:     #8A5F0D;
-  --b-soft:    rgba(188,132,25,.13);
   --good:      #0ca30c;
   --warn:      #fab219;
   --crit:      #d03b3b;
@@ -53,9 +50,6 @@
     --a:         #2FA89A;
     --a-ink:     #7FCFC4;
     --a-soft:    rgba(47,168,154,.15);
-    --b:         #BD8817;
-    --b-ink:     #E0B052;
-    --b-soft:    rgba(189,136,23,.16);
     --on-a:      #04201D;
     --grid:      rgba(232,237,230,.10);
     --shadow:    0 1px 0 rgba(0,0,0,.2), 0 14px 34px -26px rgba(0,0,0,.9);
@@ -198,18 +192,8 @@ a { color: var(--a-ink); text-decoration-thickness: 1px; text-underline-offset: 
 }
 @keyframes breathe { 0%,100% { transform: scaleY(1); } 50% { transform: scaleY(.44); } }
 @media (prefers-reduced-motion: reduce) { .hero-mark span { animation: none; } }
-.two-mode { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; }
-@media (max-width: 34rem) { .two-mode { grid-template-columns: 1fr; } }
-.mode-cell { background: var(--surface); padding: 1.15rem; display: flex; flex-direction: column; gap: .5rem; }
-.mode-cell.a { border-top: 3px solid var(--a); }
-.mode-cell.b { border-top: 3px solid var(--b); }
-.dim-list { display: flex; flex-direction: column; gap: 0; }
-.dim-row { display: grid; grid-template-columns: 1.4rem 1fr auto; gap: .8rem; align-items: baseline; padding: .72rem 0; border-top: 1px solid var(--rule); }
-.dim-row:first-child { border-top: 0; }
 .dim-k { font-family: var(--ff-m); font-size: .78rem; color: var(--a); font-weight: 600; }
 .dim-n { font-family: var(--ff-d); font-weight: 600; font-size: .95rem; }
-.dim-src { font-family: var(--ff-m); font-size: .72rem; color: var(--ink-3); white-space: nowrap; }
-.dim-w { font-size: .84rem; color: var(--ink-2); grid-column: 2; margin-top: -.3rem; }
 
 /* ── forms ───────────────────────────────────────────────── */
 label.fld { display: flex; flex-direction: column; gap: .3rem; }
@@ -260,37 +244,12 @@ select { appearance: none; background-image: none; cursor: pointer; }
 .opt[aria-pressed="true"] .opt-k { background: var(--a); color: var(--on-a); }
 .st-foot { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 1.25rem; flex-wrap: wrap; }
 
-/* ── likert (mode B) ─────────────────────────────────────── */
-.q-item { padding: 1.15rem 0; border-top: 1px solid var(--rule); }
-.q-item:first-of-type { border-top: 0; }
-.q-head { display: grid; grid-template-columns: 2rem 1fr; gap: .8rem; align-items: baseline; }
-.q-n { font-family: var(--ff-m); font-size: .75rem; color: var(--ink-3); font-variant-numeric: tabular-nums; }
-.q-t { font-size: 1.04rem; line-height: 1.5; }
-.likert { display: grid; grid-template-columns: repeat(5, 1fr); gap: .3rem; margin: .8rem 0 0 2.8rem; }
-@media (max-width: 34rem) { .likert { margin-left: 0; } }
-.lk {
-  font-family: var(--ff-m); font-size: .7rem; line-height: 1.25;
-  background: var(--surface); color: var(--ink-2); border: 1px solid var(--rule);
-  border-radius: 3px; padding: .5rem .25rem; cursor: pointer; text-align: center;
-  display: flex; flex-direction: column; gap: .25rem; align-items: center;
-}
-.lk b { font-size: .95rem; font-weight: 600; color: var(--ink); }
-.lk span { font-size: .6rem; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-3); }
-.lk:hover { border-color: var(--ink-3); }
-.lk[aria-pressed="true"] { background: var(--b-soft); border-color: var(--b); box-shadow: inset 0 0 0 1px var(--b); }
-.lk[aria-pressed="true"] b, .lk[aria-pressed="true"] span { color: var(--b-ink); }
-.q-bar { position: sticky; bottom: 0; background: color-mix(in srgb, var(--ground) 92%, transparent); backdrop-filter: blur(8px); border-top: 1px solid var(--rule); padding: .8rem 0; margin-top: 1.5rem; }
-
 /* ── slider ──────────────────────────────────────────────── */
 input[type="range"] { width: 100%; accent-color: var(--a); height: 1.75rem; }
 .tick-row { display: flex; justify-content: space-between; font-family: var(--ff-m); font-size: .68rem; color: var(--ink-3); }
 
 /* ── receipt / scores ────────────────────────────────────── */
-.score-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; }
-@media (max-width: 30rem) { .score-pair { grid-template-columns: 1fr; } }
-.score-cell { background: var(--surface); padding: 1.1rem 1.15rem; }
-.score-cell.a { border-top: 3px solid var(--a); }
-.score-cell.b { border-top: 3px solid var(--b); }
+.score-solo { background: var(--surface); border: 1px solid var(--rule); border-top: 3px solid var(--a); border-radius: 4px; padding: 1.1rem 1.15rem; }
 .score-big { font-family: var(--ff-m); font-size: 2.5rem; font-weight: 500; letter-spacing: -.03em; font-variant-numeric: tabular-nums; line-height: 1; }
 .score-big { color: var(--ink); }
 .score-of { font-family: var(--ff-m); font-size: .8rem; color: var(--ink-3); }
@@ -323,7 +282,6 @@ input[type="range"] { width: 100%; accent-color: var(--a); height: 1.75rem; }
 .lg { display: inline-flex; align-items: center; gap: .38rem; font-family: var(--ff-m); font-size: .72rem; color: var(--ink-2); }
 .sw { width: .7rem; height: .7rem; border-radius: 2px; flex: none; }
 .sw.a { background: var(--a); }
-.sw.b { background: var(--b); }
 figure { margin: 0; }
 .viz { width: 100%; height: auto; display: block; overflow: visible; }
 .viz text { font-family: var(--ff-m); font-variant-numeric: tabular-nums; }
@@ -357,7 +315,6 @@ tr.tot td { border-top: 1px solid var(--rule-2); border-bottom: 0; color: var(--
   border-left: 2px solid var(--a); background: var(--a-soft);
   padding: .7rem .9rem; border-radius: 0 3px 3px 0; font-size: .9rem; color: var(--ink-2);
 }
-.note.b { border-left-color: var(--b); background: var(--b-soft); }
 details.bank { border-top: 1px solid var(--rule); }
 details.bank summary {
   cursor: pointer; padding: .7rem 0; display: grid; grid-template-columns: 3.4rem 1fr auto;
@@ -413,48 +370,47 @@ details.bank .ladder { padding: 0 0 1rem 4.2rem; display: flex; flex-direction: 
 <script>
 /* ═══════════════════════════════════════════════════════════════════
    SHIFT SIGNAL
-   An engagement-measurement instrument that administers the same
-   construct twice: Mode A (scenario simulation) and Mode B (Gallup
-   Q12, retrospectively worded). Both land on an identical 1–5 metric.
+   An engagement-measurement instrument: a scenario simulation walking
+   the respondent through one retrospective workday at a former
+   employer, scored onto a 1–5 engagement index.
    ═══════════════════════════════════════════════════════════════════ */
 
 /* ── 1 · CONSTRUCT ─────────────────────────────────────────────────
    Engagement = the investment of the self in a work role (Kahn, 1990),
    expressed as vigour, dedication and absorption (Schaufeli et al.,
    2002) and made possible by job resources (Bakker & Demerouti, 2007).
-   Five dimensions. Each carries the same number of items in BOTH
-   modes, so mode differences cannot be an artefact of coverage.      */
+   Five dimensions, spanning Kahn's three psychological conditions.   */
 const DIMS = [
   { k: 'D1', id: 'clarity',     name: 'Role Clarity & Resources', theory: 'Kahn: psychological availability · JD-R: job resources',
-    why: 'Knowing what the work is, and having the means to do it, is the precondition for investing effort at all.', q12: [1, 2],
+    why: 'Knowing what the work is, and having the means to do it, is the precondition for investing effort at all.',
     op: 'Two stations put the respondent at the start of a day, then in front of a deadline needing access they may not have. The choice reports whether expectations and resources were actually present, rather than asking them to rate clarity in the abstract.',
     action: 'Publish a one-page "what done looks like" for every role and refresh it at each quarter boundary. Audit tooling and system access at onboarding rather than through tickets afterwards.' },
   { k: 'D2', id: 'recognition', name: 'Recognition & Being Valued', theory: 'Kahn: meaningfulness & safety',
-    why: 'Effort that is seen and valued returns as meaningfulness; unseen effort is withdrawn.', q12: [4, 5],
+    why: 'Effort that is seen and valued returns as meaningfulness; unseen effort is withdrawn.',
     op: 'One station follows a genuinely hard delivery into the week after it shipped; one puts a personal emergency against an unfinished deadline. Both surface recognition and regard as observable events, not sentiments.',
-    action: 'Require specific, named recognition within seven days of a delivery — the Q12 own window — and track it as a manager behaviour, not only as an employee feeling.' },
+    action: 'Require specific, named recognition within seven days of a delivery, and track it as a manager behaviour, not only as an employee feeling.' },
   { k: 'D3', id: 'growth',      name: 'Growth & Progress', theory: 'JD-R: developmental resources · UWES: dedication',
-    why: 'A forward path converts a job into a trajectory, sustaining dedication over time.', q12: [6, 11, 12],
+    why: 'A forward path converts a job into a trajectory, sustaining dedication over time.',
     op: 'Three stations cover a stretch opportunity, the last progress conversation, and a year-end retrospective on skill. Together they separate development that happened from development that was merely available.',
     action: 'Diarise a dated progress conversation twice a year for every reportee, held separately from appraisal, closing on one written development commitment.' },
   { k: 'D4', id: 'voice',       name: 'Voice & Team Trust', theory: 'Kahn: psychological safety',
-    why: 'People invest themselves only where it is safe to speak and where others hold the standard.', q12: [7, 9, 10],
+    why: 'People invest themselves only where it is safe to speak and where others hold the standard.',
     op: 'Three stations ask what the respondent did — spoke up or stayed quiet, where lunch was actually spent, what quality arrived from colleagues — capturing behaviour rather than a claim about the climate.',
     action: 'Close the loop visibly: record the decision and the reason for every point raised in a review. Voice that is heard and never acted on reads to the person as no voice at all.' },
   { k: 'D5', id: 'meaning',     name: 'Meaning & Strengths Use', theory: 'Kahn: psychological meaningfulness · UWES: absorption',
-    why: 'Work that draws on what you are good at, for a purpose you accept, is what absorbs you.', q12: [3, 8],
+    why: 'Work that draws on what you are good at, for a purpose you accept, is what absorbs you.',
     op: 'One station allocates the week\'s work against the respondent\'s strengths; one asks what they would honestly have told a friend about what the organisation was for. The second is the sharpest test of stated against felt purpose.',
     action: 'Make the line from individual task to organisational purpose explicit at goal-setting, and re-cut assignments so strengths are engaged in at least half of a person\'s week.' }
 ];
 const DIM = Object.fromEntries(DIMS.map(d => [d.id, d]));
 
-/* ── 2 · MODE A · THE SIMULATION ───────────────────────────────────
-   One retrospective workday at the respondent's previous employer.
-   12 stations, weight-matched to the Q12 dimension map above.
-   Options are ordered 4→1 in the source and shuffled at render.
-   Raw 1–4 is rescaled to 1–5: s = 1 + (raw − 1) × 4/3.               */
+/* ── 2 · THE SIMULATION ─────────────────────────────────────────────
+   One retrospective workday at the respondent's previous employer,
+   12 stations across the five dimensions above. Options are ordered
+   4→1 in the source and shuffled at render. Raw 1–4 is rescaled to
+   1–5: s = 1 + (raw − 1) × 4/3.                                      */
 const STATIONS = [
-  { t: '09:10', dim: 'clarity', mirrors: 'Q1 · knew what was expected',
+  { t: '09:10', dim: 'clarity',
     scene: 'A normal Tuesday at your last job. Laptop open, coffee down, inbox loading. You have roughly an hour before the day takes over.',
     prompt: 'How did that first hour usually go?',
     opts: [
@@ -463,7 +419,7 @@ const STATIONS = [
       { v: 2, t: 'I had to chase someone before I could tell what actually mattered.' },
       { v: 1, t: 'I worked on whatever looked urgent and hoped it was the right thing.' } ] },
 
-  { t: '09:45', dim: 'clarity', mirrors: 'Q2 · had the materials and equipment',
+  { t: '09:45', dim: 'clarity',
     scene: 'A deadline lands for end of day. To deliver it properly you need one system, one approval, and one file that lives on somebody else’s drive.',
     prompt: 'What happened next?',
     opts: [
@@ -472,7 +428,7 @@ const STATIONS = [
       { v: 2, t: 'Half the day went on raising tickets and chasing people for access.' },
       { v: 1, t: 'The tools were poor enough that doing it properly was not possible.' } ] },
 
-  { t: '11:00', dim: 'meaning', mirrors: 'Q3 · opportunity to do what I do best',
+  { t: '11:00', dim: 'meaning',
     scene: 'Your manager redistributes the week’s work in the standup. You listen for which slice is yours.',
     prompt: 'The work you were handed, week after week, mostly...',
     opts: [
@@ -481,7 +437,7 @@ const STATIONS = [
       { v: 2, t: 'Could have been done by anyone. My strengths sat idle.' },
       { v: 1, t: 'Was mismatched to me. I was weakest at exactly what the job required.' } ] },
 
-  { t: '11:40', dim: 'voice', mirrors: 'Q7 · my opinions seemed to count',
+  { t: '11:40', dim: 'voice',
     scene: 'Mid-morning review. Halfway through the deck you spot a flaw in the plan that nobody has named. Two people senior to you are in the room.',
     prompt: 'What did you actually do, in that job?',
     opts: [
@@ -490,7 +446,7 @@ const STATIONS = [
       { v: 2, t: 'Kept it for a private word afterwards, not for the room.' },
       { v: 1, t: 'Said nothing. Speaking up cost more than it was ever worth.' } ] },
 
-  { t: '12:30', dim: 'recognition', mirrors: 'Q4 · recognition in the last seven days',
+  { t: '12:30', dim: 'recognition',
     scene: 'You ship the piece of work that was genuinely hard — the one you stayed late for twice.',
     prompt: 'Over the week that followed...',
     opts: [
@@ -499,7 +455,7 @@ const STATIONS = [
       { v: 2, t: 'Nothing was said. The work was absorbed silently.' },
       { v: 1, t: 'It went unnoticed, and the next ask arrived instead.' } ] },
 
-  { t: '13:15', dim: 'voice', mirrors: 'Q10 · a close friend at work',
+  { t: '13:15', dim: 'voice',
     scene: 'Lunch. Nobody has organised anything, so where you eat is entirely your own habit.',
     prompt: 'Where did that hour actually go?',
     opts: [
@@ -508,7 +464,7 @@ const STATIONS = [
       { v: 2, t: 'At my desk with the screen still on.' },
       { v: 1, t: 'Alone, deliberately. The team took more out of me than it gave.' } ] },
 
-  { t: '14:20', dim: 'growth', mirrors: 'Q6 · someone encouraged my development',
+  { t: '14:20', dim: 'growth',
     scene: 'A stretch project opens up — the kind of work that sits one level above your title.',
     prompt: 'How did that tend to resolve for you?',
     opts: [
@@ -517,7 +473,7 @@ const STATIONS = [
       { v: 2, t: 'It went to someone else and was never discussed with me.' },
       { v: 1, t: 'I was told, in so many words, to stay in my lane.' } ] },
 
-  { t: '15:00', dim: 'voice', mirrors: 'Q9 · colleagues committed to quality',
+  { t: '15:00', dim: 'voice',
     scene: 'A colleague moves teams and you inherit their half-finished handover.',
     prompt: 'What you inherited from people around you was typically...',
     opts: [
@@ -526,7 +482,7 @@ const STATIONS = [
       { v: 2, t: 'Rushed. I redid a fair amount of it.' },
       { v: 1, t: 'So far below standard that repairing others’ work became my job.' } ] },
 
-  { t: '15:50', dim: 'recognition', mirrors: 'Q5 · someone cared about me as a person',
+  { t: '15:50', dim: 'recognition',
     scene: 'At ten to four a personal emergency lands on your phone. You need to leave, and the day is not finished.',
     prompt: 'You tell your manager. The response was...',
     opts: [
@@ -535,7 +491,7 @@ const STATIONS = [
       { v: 2, t: 'Reluctant permission, with a reminder about the deadline.' },
       { v: 1, t: 'I would not have told them. It was not that kind of place.' } ] },
 
-  { t: '16:40', dim: 'meaning', mirrors: 'Q8 · the mission made my job feel important',
+  { t: '16:40', dim: 'meaning',
     scene: 'Late afternoon, energy low. A friend messages to ask what your company is actually for — and whether your part of it matters.',
     prompt: 'Honestly, what would you have typed back?',
     opts: [
@@ -544,7 +500,7 @@ const STATIONS = [
       { v: 2, t: 'I could recite the mission, but I did not feel it.' },
       { v: 1, t: 'The stated purpose and the daily reality contradicted each other.' } ] },
 
-  { t: '17:30', dim: 'growth', mirrors: 'Q11 · someone talked to me about my progress',
+  { t: '17:30', dim: 'growth',
     scene: 'The calendar reminder for your review cycle pops up and you try to remember the last one.',
     prompt: 'When had someone last talked to you about your progress?',
     opts: [
@@ -553,7 +509,7 @@ const STATIONS = [
       { v: 2, t: 'At the annual appraisal. A form was filled in and forgotten.' },
       { v: 1, t: 'Nobody had discussed my progress with me at all.' } ] },
 
-  { t: '18:40', dim: 'growth', mirrors: 'Q12 · opportunities to learn and grow',
+  { t: '18:40', dim: 'growth',
     scene: 'You shut the laptop and walk out. On the way home you think back over the whole year at that job.',
     prompt: 'Across that year...',
     opts: [
@@ -563,46 +519,8 @@ const STATIONS = [
       { v: 1, t: 'I got slower. The role took skills away from me.' } ] }
 ];
 
-/* ── 3 · MODE B · GALLUP Q12, RETROSPECTIVELY WORDED ───────────────
-   Items adapted to the past tense and to a former employer, as the
-   brief requires. Administered conventionally: static, self-report,
-   5-point Likert, canonical order. Q0 is Gallup's overall-satisfaction
-   item, reported separately and excluded from the 12-item index.      */
-const LIKERT = [
-  { v: 1, n: 'Strongly disagree', s: 'SD' },
-  { v: 2, n: 'Disagree',          s: 'D'  },
-  { v: 3, n: 'Neither',           s: 'N'  },
-  { v: 4, n: 'Agree',             s: 'A'  },
-  { v: 5, n: 'Strongly agree',    s: 'SA' }
-];
-const Q12 = [
-  { n: 1,  dim: 'clarity',     t: 'I knew what was expected of me at work.' },
-  { n: 2,  dim: 'clarity',     t: 'I had the materials and equipment I needed to do my work right.' },
-  { n: 3,  dim: 'meaning',     t: 'At work, I had the opportunity to do what I did best every day.' },
-  { n: 4,  dim: 'recognition', t: 'In a typical week there, I received recognition or praise for doing good work.' },
-  { n: 5,  dim: 'recognition', t: 'My supervisor, or someone at work, seemed to care about me as a person.' },
-  { n: 6,  dim: 'growth',      t: 'There was someone at work who encouraged my development.' },
-  { n: 7,  dim: 'voice',       t: 'At work, my opinions seemed to count.' },
-  { n: 8,  dim: 'meaning',     t: 'The mission or purpose of the organisation made me feel my job was important.' },
-  { n: 9,  dim: 'voice',       t: 'My colleagues were committed to doing quality work.' },
-  { n: 10, dim: 'voice',       t: 'I had a close friend at work.' },
-  { n: 11, dim: 'growth',      t: 'In my last six months there, someone talked to me about my progress.' },
-  { n: 12, dim: 'growth',      t: 'In my last year there, I had opportunities at work to learn and grow.' }
-];
-const Q0 = 'Overall, how satisfied were you with that organisation as a place to work?';
-
-/* Respondent-experience block — feeds the comparison of the two modes
-   on respondent experience, not the engagement index. */
-const EXP_ITEMS = [
-  { id: 'accurate', t: 'It captured what that job was really like for me.' },
-  { id: 'honest',   t: 'I felt able to answer it honestly.' },
-  { id: 'effort',   t: 'It was easy to answer — it did not make me work hard.' },
-  { id: 'engaging', t: 'I would be willing to do this again every month.' }
-];
-
 const REFS = [
   'Bakker, A. B., &amp; Demerouti, E. (2007). The job demands–resources model: State of the art. <em>Journal of Managerial Psychology, 22</em>(3), 309–328. https://doi.org/10.1108/02683940710733115',
-  'Gallup. (2023). <em>Q12 employee engagement survey</em>. Gallup, Inc. https://www.gallup.com/workplace/356045/q12-questions-summary.aspx',
   'Harter, J. K., Schmidt, F. L., &amp; Hayes, T. L. (2002). Business-unit-level relationship between employee satisfaction, employee engagement, and business outcomes: A meta-analysis. <em>Journal of Applied Psychology, 87</em>(2), 268–279. https://doi.org/10.1037/0021-9010.87.2.268',
   'Kahn, W. A. (1990). Psychological conditions of personal engagement and disengagement at work. <em>Academy of Management Journal, 33</em>(4), 692–724. https://doi.org/10.5465/256287',
   'Macey, W. H., &amp; Schneider, B. (2008). The meaning of employee engagement. <em>Industrial and Organizational Psychology, 1</em>(1), 3–30. https://doi.org/10.1111/j.1754-9434.2007.0002.x',
@@ -633,16 +551,8 @@ function dimMeansA(answers) {
   });
   return out;
 }
-function dimMeansB(scores) {
-  const out = {};
-  DIMS.forEach(d => {
-    const v = d.q12.map(n => scores['q' + n]).filter(x => x != null);
-    out[d.id] = mean(v);
-  });
-  return out;
-}
-/* Both indices are the unweighted mean of the five dimension means, so
-   each dimension counts equally in each mode. */
+/* The engagement index is the unweighted mean of the five dimension
+   means, so each dimension counts equally. */
 const indexFromDims = dm => mean(DIMS.map(d => dm[d.id]).filter(x => x != null));
 
 function band(s) {
@@ -657,22 +567,6 @@ const ICONS = {
   alert: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8 2.5L14.5 13.5h-13L8 2.5z"/><path d="M8 6.5v3.2"/><circle cx="8" cy="11.6" r=".7" fill="currentColor" stroke="none"/></svg>'
 };
 const bandChip = s => { const b = band(s); return `<span class="band ${b.cls}">${ICONS[b.icon] || ''}${b.label}</span>`; };
-
-/* Pearson r and the mean-difference statistics used in the analysis. */
-function pearson(xs, ys) {
-  const n = xs.length;
-  if (n < 3) return null;
-  const mx = mean(xs), my = mean(ys);
-  let sxy = 0, sxx = 0, syy = 0;
-  for (let i = 0; i < n; i++) { const a = xs[i] - mx, b = ys[i] - my; sxy += a * b; sxx += a * a; syy += b * b; }
-  if (sxx === 0 || syy === 0) return null;
-  return sxy / Math.sqrt(sxx * syy);
-}
-function sd(a) {
-  if (a.length < 2) return null;
-  const m = mean(a);
-  return Math.sqrt(a.reduce((s, x) => s + (x - m) ** 2, 0) / (a.length - 1));
-}
 
 /* ── 5 · STATE & PERSISTENCE ───────────────────────────────────────
    Every run is written to this browser first, so a refresh or a lost
@@ -700,12 +594,10 @@ let capsReady = false;
 function newRun() {
   return {
     id: 'run-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 7),
-    v: 1, code: '', programme: '', testRun: false,
+    v: 2, code: '', programme: '', testRun: false,
     bio: { industry: '', role: '', months: '', teamSize: '', since: '' },
     consent: false, createdAt: new Date().toISOString(),
     a: { answers: STATIONS.map(() => null), incident: '', probeQ: '', probeA: '', anchor: null, stay: null, recommend: null, startedAt: null, endedAt: null },
-    b: { scores: {}, startedAt: null, endedAt: null },
-    exp: { sim: {}, q12: {}, preferred: '', cadence: '' },
     device: { w: window.innerWidth, h: window.innerHeight, touch: 'ontouchstart' in window }
   };
 }
@@ -713,18 +605,15 @@ const saveRun = () => store.set(K_RUN, run);
 const localRuns = () => store.get(K_RUNS, []);
 
 function computeScores(r) {
-  const ad = dimMeansA(r.a.answers), bd = dimMeansB(r.b.scores);
-  const ai = indexFromDims(ad), bi = indexFromDims(bd);
+  const ad = dimMeansA(r.a.answers);
+  const ai = indexFromDims(ad);
   const answered = r.a.answers.filter(Boolean);
   return {
-    simDims: ad, q12Dims: bd,
-    sim: ai, q12: bi,
-    sim100: ai == null ? null : pct100(ai), q12100: bi == null ? null : pct100(bi),
-    delta: (ai == null || bi == null) ? null : ai - bi,
-    q0: r.b.scores.q0 ?? null,
+    simDims: ad,
+    sim: ai,
+    sim100: ai == null ? null : pct100(ai),
     anchor: r.a.anchor,
     simSecs: (r.a.startedAt && r.a.endedAt) ? Math.round((r.a.endedAt - r.a.startedAt) / 1000) : null,
-    q12Secs: (r.b.startedAt && r.b.endedAt) ? Math.round((r.b.endedAt - r.b.startedAt) / 1000) : null,
     revisions: answered.reduce((s, x) => s + (x.revisions || 0), 0),
     medianLatency: median(answered.map(x => x.ms).filter(Boolean)),
     trace: r.a.answers.map(x => x ? rescale4to5(x.value) : null)
@@ -735,15 +624,13 @@ function median(a) {
   const s = [...a].sort((x, y) => x - y), m = s.length >> 1;
   return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2;
 }
-/* Data points captured per mode — the "richness" count used in the
-   comparison. Mode A logs a choice, a latency and a revision count per
-   station, plus free text; Mode B logs one number per item. */
+/* Data points captured — one choice, one latency and one revision
+   count per station, plus the closing free-text and outcome items. */
 function dataPoints(r) {
-  const a = r.a.answers.filter(Boolean).length * 3
+  const points = r.a.answers.filter(Boolean).length * 3
     + (r.a.incident ? 1 : 0) + (r.a.probeA ? 1 : 0)
     + (r.a.anchor != null ? 1 : 0) + (r.a.stay != null ? 1 : 0) + (r.a.recommend != null ? 1 : 0);
-  const b = Object.keys(r.b.scores).length;
-  return { a, b };
+  return { points };
 }
 
 async function persist(r) {
@@ -816,8 +703,8 @@ function bindTips(root) {
 const mmss = s => s == null ? '—' : Math.floor(s / 60) + 'm ' + String(s % 60).padStart(2, '0') + 's';
 
 /* ── 8 · INSTRUMENT BAR ────────────────────────────────────────────
-   The trace is the thesis of Mode A made visible: engagement as a
-   signal that moves through a day, not one number at the end of a year. */
+   The trace is the thesis of the instrument made visible: engagement
+   as a signal that moves through a day, not one number at year's end. */
 function setRig(mode) {
   if (!mode) { rig.hidden = true; return; }
   rig.hidden = false;
@@ -827,10 +714,6 @@ function setRig(mode) {
     right.innerHTML = `<span class="tiny mono" data-tip="Station ${stationIx + 1} of ${STATIONS.length}">${stationIx + 1}/${STATIONS.length}</span>
       <span class="pips" aria-hidden="true">${STATIONS.map((s, i) =>
         `<span class="pip ${i < stationIx ? 'on' : i === stationIx ? 'now' : ''}"></span>`).join('')}</span>`;
-  } else if (mode.kind === 'q12') {
-    const done = Object.keys(run.b.scores).filter(k => k !== 'q0').length;
-    mid.innerHTML = `<span class="clock">Mode B · Gallup Q12</span>`;
-    right.innerHTML = `<span class="tiny mono">${done}/12 answered</span>`;
   } else {
     mid.innerHTML = `<span class="clock">${esc(mode.label || '')}</span>`;
     right.innerHTML = mode.right || '';
@@ -861,13 +744,12 @@ function renderLanding() {
       <div class="hero-mark" aria-hidden="true">
         ${bars.map((h, i) => `<span style="height:${h}%;animation-delay:${(i * 0.16).toFixed(2)}s"></span>`).join('')}
       </div>
-      <p class="eyebrow" style="margin-bottom:.9rem">Engagement measurement · two modes, one construct</p>
-      <h1>Your last job, measured twice.</h1>
+      <p class="eyebrow" style="margin-bottom:.9rem">Engagement measurement · a scenario simulation</p>
+      <h1>Your last job, one working day.</h1>
       <p class="lede" style="margin-top:1.1rem">
         This study asks about the engagement you experienced at the workplace you left before
-        joining your MBA — <em>not</em> about student life. You will answer about it twice: once by
-        living through a simulated day at that job, and once through the Gallup Q12 survey.
-        Both take about 15 minutes together.
+        joining your MBA — <em>not</em> about student life. You'll answer by living through a
+        simulated day at that job, station by station, from clock-in to clock-out. About ten minutes.
       </p>
       <div class="btn-row" style="margin-top:1.75rem">
         <button class="btn" id="begin">Begin the study
@@ -877,57 +759,19 @@ function renderLanding() {
       </div>
     </section>
 
-    <div class="two-mode">
-      <div class="mode-cell a">
-        <p class="eyebrow">Mode A · ${STATIONS.length} stations</p>
-        <h3>A day at your last job</h3>
-        <p class="small">A scenario simulation. You move through one retrospective workday, station by
-        station, choosing what actually happened. It records your choices, how long each took, and
-        every answer you changed.</p>
-      </div>
-      <div class="mode-cell b">
-        <p class="eyebrow">Mode B · 12 items</p>
-        <h3>The Gallup Q12</h3>
-        <p class="small">The established instrument, administered conventionally: twelve statements,
-        one 5-point agree–disagree scale, reworded in the past tense for a former employer.</p>
-      </div>
+    <div class="card pad" style="border-top:3px solid var(--a)">
+      <p class="eyebrow">${STATIONS.length} stations</p>
+      <h3 style="margin-top:.35rem">A day at your last job</h3>
+      <p class="small" style="margin-top:.4rem">A scenario simulation. You move through one
+      retrospective workday, station by station, choosing what actually happened. It records your
+      choices, how long each took, and every answer you changed.</p>
     </div>
-
-    <section style="margin-top:3rem">
-      <p class="eyebrow" style="margin-bottom:.6rem">What is being measured</p>
-      <h2>Five dimensions, carried equally by both modes</h2>
-      <p class="small" style="margin:.9rem 0 1.4rem; max-width:60ch">
-        Engagement here is the investment of the self in a work role (Kahn, 1990) — expressed as
-        vigour, dedication and absorption (Schaufeli et al., 2002) and made possible by the resources
-        the job provides (Bakker &amp; Demerouti, 2007). Each dimension carries the same weight in the
-        simulation as it does in the Q12, so a difference between the two scores is a difference of
-        <em>method</em>, not of coverage.
-      </p>
-      <div class="card pad dim-list">
-        ${DIMS.map(d => `
-          <div class="dim-row">
-            <span class="dim-k">${d.k}</span>
-            <span class="dim-n">${esc(d.name)}</span>
-            <span class="dim-src">${d.q12.map(n => 'Q' + n).join(' · ')}</span>
-            <span class="dim-w">${esc(d.why)}<br><span class="tiny">${esc(d.theory)}</span></span>
-          </div>`).join('')}
-      </div>
-      <p class="tiny" style="margin-top:.7rem">
-        <a href="#/methods">Read the full design record →</a> — construct, item bank, scoring model, limitations.<br>
-        Mode A holds ${DIMS.map(d => d.k + ':' + d.q12.length).join(' · ')} stations — the same item count per dimension as the Q12.
-      </p>
-    </section>
 
     <section style="margin-top:2.5rem" class="note">
       <strong>Retrospective framing.</strong> Everything you see asks about one specific past
       employer — the last full-time role you held before your MBA. Pick that job now and keep it in
-      mind throughout, in both modes.
+      mind throughout.
     </section>
-
-    <p class="tiny" style="margin-top:2rem">
-      Q12 items are adapted from Gallup's twelve engagement items and reworded for retrospective,
-      educational use in this coursework; Q12<sup>®</sup> is a Gallup trademark.
-    </p>
   `);
   document.getElementById('begin').onclick = () => { run = newRun(); saveRun(); renderIntake(); };
 }
@@ -935,10 +779,10 @@ function renderLanding() {
 /* ── 10 · SCREEN · CONSENT & INTAKE ────────────────────────────────  */
 function renderIntake() {
   screen = 'intake';
-  setRig({ kind: 'plain', label: 'Step 1 of 4 · Consent' });
+  setRig({ kind: 'plain', label: 'Step 1 of 2 · Consent' });
   paint(`
     <section style="padding:2.5rem 0 1rem">
-      <p class="eyebrow">Step 1 of 4</p>
+      <p class="eyebrow">Step 1 of 2</p>
       <h2 style="margin-top:.5rem">Consent, and the job we are asking about</h2>
     </section>
 
@@ -946,8 +790,8 @@ function renderIntake() {
       <div class="stack" style="gap:.55rem">
         <h4>Informed consent</h4>
         <p class="small">Your responses are collected for a Term VII Introduction to HRM group
-        assignment at IIM Ranchi, comparing two ways of measuring workplace engagement. No name,
-        email or employer name is recorded — you are identified only by a respondent code. Your
+        assignment at IIM Ranchi, measuring workplace engagement through a scenario simulation. No
+        name, email or employer name is recorded — you are identified only by a respondent code. Your
         answers are stored so the group can analyse and report them in anonymised, aggregated form.
         You can stop at any point by closing the tab, and nothing partial is submitted.</p>
         <label class="check" style="margin-top:.4rem">
@@ -1021,7 +865,7 @@ function renderIntake() {
         <span id="dbSlot"></span>
         <div class="btn-row">
           <button class="btn btn-2" id="back">Back</button>
-          <button class="btn" id="next" disabled>Start Mode A</button>
+          <button class="btn" id="next" disabled>Start the simulation</button>
         </div>
       </div>
     </div>
@@ -1049,13 +893,13 @@ function renderIntake() {
   };
 }
 
-/* ── 11 · SCREEN · MODE A ──────────────────────────────────────────  */
+/* ── 11 · SCREEN · THE SIMULATION ───────────────────────────────────  */
 function renderSimIntro() {
   screen = 'simIntro';
-  setRig({ kind: 'plain', label: 'Step 2 of 4 · Mode A' });
+  setRig({ kind: 'plain', label: 'Step 2 of 2 · The simulation' });
   paint(`
     <section style="padding:2.5rem 0 1rem">
-      <p class="eyebrow">Step 2 of 4 · Mode A</p>
+      <p class="eyebrow">Step 2 of 2</p>
       <h2 style="margin-top:.5rem">One day at the job you left</h2>
       <p class="lede" style="margin-top:.9rem">
         What follows is a single ordinary workday at your previous employer, from 09:10 to 18:40.
@@ -1115,7 +959,7 @@ function renderStation() {
             </button>`).join('')}
         </div>
         <div class="st-foot">
-          <span class="tiny">${stationIx === 0 ? 'Answer about your previous workplace' : 'Mode A · station ' + (stationIx + 1)}</span>
+          <span class="tiny">${stationIx === 0 ? 'Answer about your previous workplace' : 'Station ' + (stationIx + 1)}</span>
           <div class="btn-row">
             ${stationIx > 0 ? '<button class="btn btn-2 btn-sm" id="prev">Previous</button>' : ''}
             <button class="btn" id="cont" ${prev ? '' : 'disabled'}>
@@ -1163,18 +1007,18 @@ document.addEventListener('keydown', e => {
   }
 });
 
-/* ── 12 · SCREEN · MODE A · QUALITATIVE TAIL + AI PROBE ────────────  */
+/* ── 12 · SCREEN · QUALITATIVE TAIL + AI PROBE ─────────────────────  */
 function renderSimExtras() {
   screen = 'simExtras';
-  setRig({ kind: 'plain', label: '18:40 · End of day', right: '<span class="tiny mono">Mode A · closing</span>' });
+  setRig({ kind: 'plain', label: '18:40 · End of day', right: '<span class="tiny mono">Closing</span>' });
   const sc = computeScores(run);
   paint(`
     <section style="padding:2.25rem 0 .5rem">
-      <p class="eyebrow">Mode A · closing</p>
+      <p class="eyebrow">Closing</p>
       <h2 style="margin-top:.5rem">The day is over. Three last things.</h2>
       <p class="small" style="margin-top:.8rem; max-width:60ch">
         The simulation has recorded your ${STATIONS.length} choices. These last items are not scored
-        into the engagement index — they give the analysis something the Q12 cannot capture.
+        into the engagement index — they give the analysis material a numeric scale alone can't capture.
       </p>
     </section>
 
@@ -1193,7 +1037,7 @@ function renderSimExtras() {
 
       <div class="stack" style="gap:.5rem">
         <span class="fld-l">Overall, how engaged were you in that job?</span>
-        <span class="small">This single self-rating is the anchor the two instruments are checked against.</span>
+        <span class="small">This single self-rating is the anchor the simulation's index is checked against.</span>
         <input type="range" id="anchor" min="0" max="10" step="1" value="5" aria-label="Overall engagement, 0 to 10">
         <div class="tick-row"><span>0 · not at all</span><span class="mono" id="anchorV" style="color:var(--ink); font-weight:500">5</span><span>10 · completely</span></div>
       </div>
@@ -1220,8 +1064,8 @@ function renderSimExtras() {
       </div>
 
       <div class="st-foot">
-        <span class="tiny mono">Mode A index so far · ${r2(sc.sim)} / 5.00</span>
-        <button class="btn" id="doneA" disabled>Finish Mode A</button>
+        <span class="tiny mono">Engagement index so far · ${r2(sc.sim)} / 5.00</span>
+        <button class="btn" id="doneA" disabled>Finish and see your score</button>
       </div>
     </div>
   `);
@@ -1239,11 +1083,21 @@ function renderSimExtras() {
   });
   const doneBtn = document.getElementById('doneA');
   function check() { doneBtn.disabled = !(run.a.anchor != null && run.a.stay && run.a.recommend); }
-  doneBtn.onclick = () => { run.a.endedAt = Date.now(); saveRun(); renderBridge(); };
+  doneBtn.onclick = async () => {
+    doneBtn.disabled = true;
+    doneBtn.innerHTML = '<span class="spin"></span> Storing…';
+    run.a.endedAt = Date.now();
+    run.completedAt = new Date().toISOString();
+    run.scores = computeScores(run);
+    run.points = dataPoints(run);
+    saveRun();
+    const where = await persist(run);
+    renderReceipt(where);
+  };
   mountProbe();
 }
 
-/* The adaptive probe is the one genuinely AI-enabled moment in Mode A:
+/* The adaptive probe is the one genuinely AI-enabled moment in the simulation:
    one follow-up question written for this respondent's own pattern of
    answers. It degrades to nothing when sampling is unavailable. */
 function mountProbe() {
@@ -1303,192 +1157,12 @@ function mountProbe() {
   setTimeout(() => clearInterval(wait), 12000);
 }
 
-/* ── 13 · SCREEN · BRIDGE ──────────────────────────────────────────  */
-function renderBridge() {
-  screen = 'bridge';
-  setRig({ kind: 'plain', label: 'Step 3 of 4 · Mode B' });
-  const sc = computeScores(run);
-  paint(`
-    <section style="padding:2.5rem 0 1rem">
-      <p class="eyebrow">Step 3 of 4 · Mode B</p>
-      <h2 style="margin-top:.5rem">Now the same question, the traditional way</h2>
-      <p class="lede" style="margin-top:.9rem">
-        Mode A took you ${mmss(sc.simSecs)}. What follows is the Gallup Q12 — twelve statements about
-        the same workplace, on one agree–disagree scale, as an organisation would administer it in an
-        annual survey.
-      </p>
-      <div class="note b" style="margin-top:1.4rem">
-        <strong>Keep the same job in mind.</strong> Same employer, same period. Answer as the person
-        you were then, not as you see it now — and answer independently of what you picked in the
-        simulation.
-      </div>
-      <div class="btn-row" style="margin-top:1.8rem">
-        <button class="btn" id="go">Start the Q12</button>
-        <span class="tiny">12 items · about 4 minutes</span>
-      </div>
-    </section>
-  `);
-  document.getElementById('go').onclick = () => { run.b.startedAt = Date.now(); saveRun(); renderQ12(); };
-}
-
-/* ── 14 · SCREEN · MODE B · Q12 ────────────────────────────────────  */
-function renderQ12() {
-  screen = 'q12';
-  setRig({ kind: 'q12' });
-  const item = (n, t, key) => `
-    <div class="q-item" data-key="${key}">
-      <div class="q-head"><span class="q-n">${n}</span><p class="q-t">${esc(t)}</p></div>
-      <div class="likert" role="group" aria-label="${esc(t)}">
-        ${LIKERT.map(l => `
-          <button class="lk" data-v="${l.v}" aria-pressed="${run.b.scores[key] === l.v ? 'true' : 'false'}" title="${esc(l.n)}">
-            <b>${l.v}</b><span>${esc(l.s)}</span>
-          </button>`).join('')}
-      </div>
-    </div>`;
-  paint(`
-    <section style="padding:2.25rem 0 .25rem">
-      <p class="eyebrow">Mode B · Gallup Q12, retrospectively worded</p>
-      <h2 style="margin-top:.5rem">Thinking about that previous workplace…</h2>
-      <p class="small" style="margin-top:.7rem">
-        1 = strongly disagree · 3 = neither · 5 = strongly agree. Answer every item.
-      </p>
-    </section>
-    <div class="card pad" style="margin-top:1.25rem">
-      ${item('Q0', Q0, 'q0')}
-      <p class="tiny" style="padding:.2rem 0 0">Q0 is Gallup's overall-satisfaction item. It is reported separately and is not part of the twelve-item index.</p>
-    </div>
-    <div class="card pad" style="margin-top:1.25rem">
-      ${Q12.map(q => item('Q' + q.n, q.t, 'q' + q.n)).join('')}
-    </div>
-    <div class="q-bar">
-      <div class="st-foot" style="margin:0">
-        <span class="tiny mono" id="qCount">0 of 13 answered</span>
-        <button class="btn" id="doneB" disabled>Finish the Q12</button>
-      </div>
-    </div>
-    <p class="tiny" style="margin-top:1rem">
-      Items adapted from Gallup's twelve engagement items, reworded in the past tense for retrospective,
-      educational use. Q12<sup>®</sup> is a Gallup trademark; this adaptation is not a Gallup product.
-    </p>
-  `);
-  const doneBtn = document.getElementById('doneB'), count = document.getElementById('qCount');
-  function refresh() {
-    const n = Object.keys(run.b.scores).length;
-    count.textContent = n + ' of 13 answered';
-    doneBtn.disabled = !(Q12.every(q => run.b.scores['q' + q.n] != null) && run.b.scores.q0 != null);
-    const right = document.getElementById('rigRight');
-    if (right) right.innerHTML = `<span class="tiny mono">${Object.keys(run.b.scores).filter(k => k !== 'q0').length}/12 answered</span>`;
-  }
-  stage.querySelectorAll('.q-item').forEach(row => {
-    const key = row.dataset.key;
-    row.querySelectorAll('.lk').forEach(b => {
-      b.onclick = () => {
-        run.b.scores[key] = Number(b.dataset.v);
-        row.querySelectorAll('.lk').forEach(x => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
-        saveRun(); refresh();
-      };
-    });
-  });
-  refresh();
-  doneBtn.onclick = () => { run.b.endedAt = Date.now(); saveRun(); renderExperience(); };
-}
-
-/* ── 15 · SCREEN · RESPONDENT EXPERIENCE ───────────────────────────  */
-function renderExperience() {
-  screen = 'experience';
-  setRig({ kind: 'plain', label: 'Step 4 of 4 · Comparing the two' });
-  const block = (mode, cls) => `
-    <div class="stack" style="gap:.75rem">
-      <p class="eyebrow" style="color:var(--${cls}-ink)">${mode === 'sim' ? 'Mode A · the simulation' : 'Mode B · the Q12'}</p>
-      ${EXP_ITEMS.map(it => `
-        <div class="stack" style="gap:.35rem" data-exp="${mode}:${it.id}">
-          <span class="small" style="color:var(--ink)">${esc(it.t)}</span>
-          <div class="likert" style="margin:0">
-            ${LIKERT.map(l => `<button class="lk" data-v="${l.v}" aria-pressed="false" title="${esc(l.n)}"><b>${l.v}</b><span>${esc(l.s)}</span></button>`).join('')}
-          </div>
-        </div>`).join('')}
-    </div>`;
-  paint(`
-    <section style="padding:2.25rem 0 .5rem">
-      <p class="eyebrow">Step 4 of 4</p>
-      <h2 style="margin-top:.5rem">Which one got closer to the truth?</h2>
-      <p class="small" style="margin-top:.8rem; max-width:60ch">
-        You have now answered the same question two different ways. Rate each method on the same four
-        statements. This is the only part of the study about the <em>instruments</em> rather than
-        about your old job.
-      </p>
-    </section>
-
-    <div class="card pad stack" style="gap:1.6rem; margin-top:1.25rem">
-      ${block('sim', 'a')}
-      <hr class="hr">
-      ${block('q12', 'b')}
-      <hr class="hr">
-      <div class="grid-2">
-        <div class="stack" style="gap:.45rem">
-          <span class="fld-l">Which described that job more truthfully?</span>
-          <div class="seg" id="pref">
-            <button data-v="sim" aria-pressed="false">Simulation</button>
-            <button data-v="equal" aria-pressed="false">Both equally</button>
-            <button data-v="q12" aria-pressed="false">Q12</button>
-          </div>
-        </div>
-        <div class="stack" style="gap:.45rem">
-          <span class="fld-l">If your employer measured engagement, how often would you want it?</span>
-          <div class="seg" id="cad">
-            <button data-v="weekly" aria-pressed="false">Weekly</button>
-            <button data-v="monthly" aria-pressed="false">Monthly</button>
-            <button data-v="quarterly" aria-pressed="false">Quarterly</button>
-            <button data-v="annual" aria-pressed="false">Annually</button>
-          </div>
-        </div>
-      </div>
-      <div class="st-foot">
-        <span class="tiny">Submitting stores your two scores as one paired observation.</span>
-        <button class="btn" id="submit" disabled>Submit and see my scores</button>
-      </div>
-    </div>
-  `);
-  const submit = document.getElementById('submit');
-  function check() {
-    const full = ['sim', 'q12'].every(m => EXP_ITEMS.every(it => run.exp[m][it.id] != null));
-    submit.disabled = !(full && run.exp.preferred && run.exp.cadence);
-  }
-  stage.querySelectorAll('[data-exp]').forEach(row => {
-    const [m, id] = row.dataset.exp.split(':');
-    row.querySelectorAll('.lk').forEach(b => {
-      b.onclick = () => {
-        run.exp[m][id] = Number(b.dataset.v);
-        row.querySelectorAll('.lk').forEach(x => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
-        saveRun(); check();
-      };
-    });
-  });
-  [['pref', 'preferred'], ['cad', 'cadence']].forEach(([id, key]) => {
-    document.getElementById(id).querySelectorAll('button').forEach(b => {
-      b.onclick = () => {
-        document.getElementById(id).querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
-        run.exp[key] = b.dataset.v; saveRun(); check();
-      };
-    });
-  });
-  submit.onclick = async () => {
-    submit.disabled = true;
-    submit.innerHTML = '<span class="spin"></span> Storing…';
-    run.completedAt = new Date().toISOString();
-    run.scores = computeScores(run);
-    run.points = dataPoints(run);
-    const where = await persist(run);
-    renderReceipt(where);
-  };
-}
-
-/* ── 16 · SCREEN · RECEIPT ─────────────────────────────────────────  */
+/* ── 13 · SCREEN · RECEIPT ─────────────────────────────────────────  */
 function encodeRun(r) {
   try { return btoa(unescape(encodeURIComponent(JSON.stringify(r)))); } catch (e) { return ''; }
 }
 function decodeRun(s) {
-  try { const r = JSON.parse(decodeURIComponent(escape(atob(s.trim())))); return (r && r.id && r.a && r.b) ? r : null; }
+  try { const r = JSON.parse(decodeURIComponent(escape(atob(s.trim())))); return (r && r.id && r.a) ? r : null; }
   catch (e) { return null; }
 }
 function renderReceipt(where) {
@@ -1499,7 +1173,7 @@ function renderReceipt(where) {
   paint(`
     <section style="padding:2.5rem 0 1rem">
       <p class="eyebrow">Complete · respondent ${esc(run.code)} · ${esc(run.programme)}</p>
-      <h2 style="margin-top:.5rem">Two measurements of the same job</h2>
+      <h2 style="margin-top:.5rem">One measurement of your last job</h2>
       <p class="small" style="margin-top:.8rem; max-width:60ch">
         ${where === 'stored'
           ? 'Your responses are stored with the study.'
@@ -1507,57 +1181,36 @@ function renderReceipt(where) {
       </p>
     </section>
 
-    <div class="score-pair" style="margin-top:1.25rem">
-      <div class="score-cell a">
-        <p class="eyebrow">Mode A · simulation</p>
-        <p class="score-big">${r2(sc.sim)}</p>
-        <p class="score-of">of 5.00 · ${r0(sc.sim100)} / 100</p>
-        <p style="margin-top:.5rem">${bandChip(sc.sim)}</p>
-      </div>
-      <div class="score-cell b">
-        <p class="eyebrow">Mode B · Gallup Q12</p>
-        <p class="score-big">${r2(sc.q12)}</p>
-        <p class="score-of">of 5.00 · ${r0(sc.q12100)} / 100</p>
-        <p style="margin-top:.5rem">${bandChip(sc.q12)}</p>
-      </div>
+    <div class="score-solo" style="margin-top:1.25rem">
+      <p class="eyebrow">Engagement index</p>
+      <p class="score-big">${r2(sc.sim)}</p>
+      <p class="score-of">of 5.00 · ${r0(sc.sim100)} / 100</p>
+      <p style="margin-top:.5rem">${bandChip(sc.sim)}</p>
     </div>
 
     <div class="card pad" style="margin-top:1.25rem">
       <p class="p-eyebrow">Your engagement trace</p>
       <p class="p-title">How the signal moved across the simulated day</p>
-      <p class="p-q">Each point is one station, rescaled to the same 1–5 metric the Q12 uses. A single
-      annual score is the flat average of a line that is never flat.</p>
+      <p class="p-q">Each point is one station, rescaled to the same 1–5 metric. A single annual
+      number would be the flat average of a line that is never flat.</p>
       ${chartTrace(rowFromRun(run), { compact: true })}
     </div>
 
     <div class="card pad" style="margin-top:1.25rem">
       <p class="p-eyebrow">Dimension by dimension</p>
-      <p class="p-title">Where the two instruments agreed, and where they did not</p>
+      <p class="p-title">Where the day was strongest, and where it wasn't</p>
       <div class="tbl-scroll" style="margin-top:.8rem">
         <table>
-          <thead><tr>
-            <th>Dimension</th>
-            <th><span class="sw a" style="display:inline-block;margin-right:.3rem"></span>Mode A</th>
-            <th><span class="sw b" style="display:inline-block;margin-right:.3rem"></span>Mode B</th>
-            <th>Δ</th><th>Q12 items</th>
-          </tr></thead>
+          <thead><tr><th>Dimension</th><th>Score</th></tr></thead>
           <tbody>
-            ${DIMS.map(d => {
-              const a = sc.simDims[d.id], b = sc.q12Dims[d.id];
-              const dl = (a != null && b != null) ? a - b : null;
-              return `<tr><td class="k">${d.k} · ${esc(d.name)}</td><td>${r2(a)}</td><td>${r2(b)}</td>
-                <td>${dl == null ? '—' : (dl > 0 ? '+' : '') + r2(dl)}</td>
-                <td class="tiny">${d.q12.map(n => 'Q' + n).join(' ')}</td></tr>`;
-            }).join('')}
-            <tr class="tot"><td class="k">Engagement index</td><td>${r2(sc.sim)}</td><td>${r2(sc.q12)}</td>
-              <td>${sc.delta == null ? '—' : (sc.delta > 0 ? '+' : '') + r2(sc.delta)}</td><td></td></tr>
+            ${DIMS.map(d => `<tr><td class="k">${d.k} · ${esc(d.name)}</td><td>${r2(sc.simDims[d.id])}</td></tr>`).join('')}
+            <tr class="tot"><td class="k">Engagement index</td><td>${r2(sc.sim)}</td></tr>
           </tbody>
         </table>
       </div>
       <p class="p-note">Your own overall self-rating was <span class="mono">${sc.anchor == null ? '—' : sc.anchor + '/10'}</span>
       — equivalent to <span class="mono">${sc.anchor == null ? '—' : r2(1 + (sc.anchor / 10) * 4)}</span> on the 1–5 metric.
-      Mode A took <span class="mono">${mmss(sc.simSecs)}</span> and captured ${pts.a} data points;
-      Mode B took <span class="mono">${mmss(sc.q12Secs)}</span> and captured ${pts.b}.</p>
+      The simulation took <span class="mono">${mmss(sc.simSecs)}</span> and captured ${pts.points} data points.</p>
     </div>
 
     <div class="card pad stack" style="gap:.7rem; margin-top:1.25rem">
@@ -1597,76 +1250,34 @@ function rowFromRun(r) {
   return {
     id: r.id, code: r.code || '—', programme: r.programme || '—', testRun: !!r.testRun,
     bio: r.bio || {}, completedAt: r.completedAt || r.createdAt,
-    sim: sc.sim, q12: sc.q12, sim100: sc.sim100, q12100: sc.q12100, delta: sc.delta,
-    simDims: sc.simDims, q12Dims: sc.q12Dims,
+    sim: sc.sim, sim100: sc.sim100,
+    simDims: sc.simDims,
     anchor: sc.anchor, anchor5: sc.anchor == null ? null : 1 + (sc.anchor / 10) * 4,
-    q0: sc.q0, simSecs: sc.simSecs, q12Secs: sc.q12Secs,
+    simSecs: sc.simSecs,
     revisions: sc.revisions, medianLatency: sc.medianLatency, trace: sc.trace,
-    pointsA: pts.a, pointsB: pts.b,
-    exp: r.exp || { sim: {}, q12: {} },
+    points: pts.points,
     stay: r.a.stay, recommend: r.a.recommend,
     incident: r.a.incident || '', probeQ: r.a.probeQ || '', probeA: r.a.probeA || '',
-    answers: r.a.answers, q12Raw: r.b.scores
+    answers: r.a.answers
   };
 }
 const progShort = p => p.includes('HRM') ? 'HRM' : p.includes('Analytics') ? 'BA' : p.includes('Core') ? 'Core' : '—';
 
 /* ── 18 · VISUALS ──────────────────────────────────────────────────
-   Shared conventions: recessive grid, thin marks, 2px surface gaps
-   between adjacent bars, direct value labels, all text in ink tokens
-   so colour never carries meaning alone, hover tooltips everywhere,
-   and a table view of every figure below in the data tab.            */
+   Shared conventions: recessive grid, thin marks, direct value labels,
+   all text in ink tokens so colour never carries meaning alone, hover
+   tooltips everywhere, and a table view of every figure in the data tab. */
 const AX = { min: 1, max: 5 };
-const legendAB = `<div class="legend">
-  <span class="lg"><span class="sw a"></span>Mode A · simulation</span>
-  <span class="lg"><span class="sw b"></span>Mode B · Gallup Q12</span></div>`;
 
 function yGrid(x0, x1, y, label) {
   return `<g><line x1="${x0}" y1="${y}" x2="${x1}" y2="${y}" stroke="var(--grid)" stroke-width="1"/>
     <text x="${x0 - 8}" y="${y + 3.5}" font-size="10" fill="var(--ink-3)" text-anchor="end">${label}</text></g>`;
 }
 
-/* V1 · paired slope chart — does each mode place the same person at the same level? */
-function chartPaired(all) {
-  const rows = all.filter(r => r.sim != null && r.q12 != null);
-  if (!rows.length) return emptyFig('No paired observations yet.');
-  const W = 640, H = 310, L = 34, R = 18, T = 30, B = 52;
-  const y = v => T + (1 - (v - AX.min) / (AX.max - AX.min)) * (H - T - B);
-  const step = (W - L - R) / rows.length;
-  const cx = i => L + step * (i + 0.5);
-  const grid = [1, 2, 3, 4, 5].map(v => yGrid(L, W - R, y(v), v.toFixed(0))).join('');
-  const marks = rows.map((r, i) => {
-    const x = cx(i), ya = y(r.sim), yb = y(r.q12);
-    const dl = r.delta == null ? '—' : (r.delta > 0 ? '+' : '') + r2(r.delta);
-    const flip = ya < yb;
-    return `<g>
-      <line x1="${x}" y1="${ya}" x2="${x}" y2="${yb}" stroke="var(--rule-2)" stroke-width="2" stroke-linecap="round"/>
-      <circle cx="${x}" cy="${ya}" r="6" fill="var(--a)" stroke="var(--surface)" stroke-width="2"
-        data-tip="<b>${esc(r.code)} · Mode A</b><br>Simulation index ${r2(r.sim)} / 5<br>${r0(r.sim100)} / 100"/>
-      <circle cx="${x}" cy="${yb}" r="6" fill="var(--b)" stroke="var(--surface)" stroke-width="2"
-        data-tip="<b>${esc(r.code)} · Mode B</b><br>Q12 index ${r2(r.q12)} / 5<br>${r0(r.q12100)} / 100"/>
-      <text x="${x + 12}" y="${ya + 3.5}" font-size="10.5" fill="var(--ink)">${r2(r.sim)}</text>
-      <text x="${x + 12}" y="${yb + 3.5}" font-size="10.5" fill="var(--ink)">${r2(r.q12)}</text>
-      <text x="${x}" y="${H - B + 18}" font-size="11" fill="var(--ink)" text-anchor="middle">${esc(r.code)}</text>
-      <text x="${x}" y="${H - B + 32}" font-size="9.5" fill="var(--ink-3)" text-anchor="middle">${esc(progShort(r.programme))}</text>
-      <text x="${x}" y="${H - B + 46}" font-size="9.5" fill="var(--ink-2)" text-anchor="middle">Δ ${dl}</text>
-    </g>`;
-  }).join('');
-  return `<figure>${legendAB}
-    <svg class="viz" viewBox="0 0 ${W} ${H}" role="img"
-      aria-label="Paired engagement index per respondent, simulation against Q12, on a 1 to 5 scale">
-      ${grid}
-      <line x1="${L}" y1="${y(3)}" x2="${W - R}" y2="${y(3)}" stroke="var(--dash)" stroke-width="1" stroke-dasharray="4 4"/>
-      <text x="${W - R}" y="${y(3) - 6}" font-size="9.5" fill="var(--ink-3)" text-anchor="end">scale midpoint</text>
-      ${marks}
-      <text x="${L - 8}" y="${T - 14}" font-size="9.5" fill="var(--ink-3)" text-anchor="start">index, 1–5</text>
-    </svg></figure>`;
-}
-
-/* V2 · dimension profile — grouped horizontal bars, both modes */
+/* V1 · dimension profile — mean score per dimension across the sample */
 function chartDims(rows) {
   if (!rows.length) return emptyFig('No dimension data yet.');
-  const W = 640, L = 148, R = 54, T = 10, rowH = 44, barH = 13;
+  const W = 640, L = 148, R = 54, T = 10, rowH = 30, barH = 14;
   const H = T + DIMS.length * rowH + 26;
   const x = v => L + ((v - AX.min) / (AX.max - AX.min)) * (W - L - R);
   const vgrid = [1, 2, 3, 4, 5].map(v =>
@@ -1674,117 +1285,31 @@ function chartDims(rows) {
      <text x="${x(v)}" y="${H - 8}" font-size="10" fill="var(--ink-3)" text-anchor="middle">${v}</text>`).join('');
   const bars = DIMS.map((d, i) => {
     const a = mean(rows.map(r => r.simDims[d.id]).filter(v => v != null));
-    const b = mean(rows.map(r => r.q12Dims[d.id]).filter(v => v != null));
     const top = T + i * rowH + 4;
-    const bar = (v, cls, yy, tipLabel) => v == null ? '' :
-      `<rect x="${x(AX.min)}" y="${yy}" width="${Math.max(1, x(v) - x(AX.min))}" height="${barH}" rx="3"
-         fill="var(--${cls})" data-tip="<b>${esc(d.name)}</b><br>${tipLabel} ${r2(v)} / 5${v == null ? '' : ' · ' + r0(pct100(v)) + '/100'}"/>
-       <text x="${x(v) + 7}" y="${yy + barH - 3}" font-size="10.5" fill="var(--ink)">${r2(v)}</text>`;
+    const bar = a == null ? '' :
+      `<rect x="${x(AX.min)}" y="${top}" width="${Math.max(1, x(a) - x(AX.min))}" height="${barH}" rx="3"
+         fill="var(--a)" data-tip="<b>${esc(d.name)}</b><br>Mean ${r2(a)} / 5${a == null ? '' : ' · ' + r0(pct100(a)) + '/100'}"/>
+       <text x="${x(a) + 7}" y="${top + barH - 3}" font-size="10.5" fill="var(--ink)">${r2(a)}</text>`;
     return `<g>
-      <text x="${L - 10}" y="${top + 11}" font-size="10.5" fill="var(--ink)" text-anchor="end">${d.k} · ${esc(d.name.split(' & ')[0])}</text>
-      <text x="${L - 10}" y="${top + 24}" font-size="9" fill="var(--ink-3)" text-anchor="end">${d.q12.map(n => 'Q' + n).join(' ')}</text>
-      ${bar(a, 'a', top, 'Simulation')}
-      ${bar(b, 'b', top + barH + 2, 'Q12')}
+      <text x="${L - 10}" y="${top + 10}" font-size="10.5" fill="var(--ink)" text-anchor="end">${d.k} · ${esc(d.name)}</text>
+      ${bar}
     </g>`;
   }).join('');
-  return `<figure>${legendAB}
+  return `<figure>
     <svg class="viz" viewBox="0 0 ${W} ${H}" role="img"
-      aria-label="Mean score per engagement dimension, simulation against Q12">
+      aria-label="Mean score per engagement dimension across the sample">
       ${vgrid}${bars}
       <line x1="${x(AX.min)}" y1="${T}" x2="${x(AX.min)}" y2="${T + DIMS.length * rowH - 8}" stroke="var(--rule-2)" stroke-width="1"/>
     </svg></figure>`;
 }
 
-/* V3 · difference chart — signed gap between the modes, with mean bias */
-function chartDelta(rows) {
-  const ds = rows.map(r => r.delta).filter(v => v != null);
-  if (!ds.length) return emptyFig('No differences to plot yet.');
-  const W = 640, H = 280, L = 40, R = 58, T = 20, B = 46;
-  const lim = Math.max(0.6, Math.max(...ds.map(Math.abs)) * 1.35);
-  const y = v => T + (1 - (v + lim) / (2 * lim)) * (H - T - B);
-  const step = (W - L - R) / rows.length;
-  const bw = Math.min(46, step * 0.42);
-  const bias = mean(ds), s = sd(ds);
-  const ticks = [-lim, -lim / 2, 0, lim / 2, lim].map(v =>
-    yGrid(L, W - R, y(v), (v > 0 ? '+' : '') + r1(v))).join('');
-  const bars = rows.map((r, i) => {
-    if (r.delta == null) return '';
-    const x = L + step * (i + 0.5) - bw / 2;
-    const up = r.delta >= 0;
-    const h = Math.max(1.5, Math.abs(y(r.delta) - y(0)));
-    return `<g>
-      <rect x="${x}" y="${up ? y(r.delta) : y(0)}" width="${bw}" height="${h}" rx="3"
-        fill="var(--${up ? 'a' : 'b'})"
-        data-tip="<b>${esc(r.code)}</b><br>Simulation ${r2(r.sim)} · Q12 ${r2(r.q12)}<br>${up ? 'Simulation read higher' : 'Q12 read higher'} by ${r2(Math.abs(r.delta))}"/>
-      <text x="${x + bw / 2}" y="${up ? y(r.delta) - 7 : y(r.delta) + 14}" font-size="10.5" fill="var(--ink)" text-anchor="middle">${(r.delta > 0 ? '+' : '') + r2(r.delta)}</text>
-      <text x="${x + bw / 2}" y="${H - B + 20}" font-size="11" fill="var(--ink)" text-anchor="middle">${esc(r.code)}</text>
-      <text x="${x + bw / 2}" y="${H - B + 33}" font-size="9.5" fill="var(--ink-3)" text-anchor="middle">${esc(progShort(r.programme))}</text>
-    </g>`;
-  }).join('');
-  return `<figure>
-    <div class="legend">
-      <span class="lg"><span class="sw a"></span>Simulation read higher</span>
-      <span class="lg"><span class="sw b"></span>Q12 read higher</span>
-    </div>
-    <svg class="viz" viewBox="0 0 ${W} ${H}" role="img"
-      aria-label="Difference between simulation and Q12 index per respondent, with the mean difference marked">
-      ${ticks}${bars}
-      <line x1="${L}" y1="${y(0)}" x2="${W - R}" y2="${y(0)}" stroke="var(--ink-3)" stroke-width="1.5"/>
-      <line x1="${L}" y1="${y(bias)}" x2="${W - R}" y2="${y(bias)}" stroke="var(--ink)" stroke-width="1.5" stroke-dasharray="5 4"/>
-      <text x="${W - R + 5}" y="${y(bias) + 3.5}" font-size="9.5" fill="var(--ink)">mean</text>
-      <text x="${W - R + 5}" y="${y(bias) + 15}" font-size="9.5" fill="var(--ink-2)">${(bias > 0 ? '+' : '') + r2(bias)}</text>
-      <text x="${L}" y="${T - 6}" font-size="9.5" fill="var(--ink-3)">index points, Mode A − Mode B</text>
-    </svg>
-    <p class="p-note">Mean difference <span class="mono">${(bias > 0 ? '+' : '') + r2(bias)}</span>
-      index points${s == null ? '' : `, SD <span class="mono">${r2(s)}</span>`}.
-      With ${rows.length} paired observation${rows.length === 1 ? '' : 's'} this describes the sample; it does not
-      establish agreement limits, which need a far larger n.</p>
-  </figure>`;
-}
-
-/* V4 · convergent validity — one series of paired points against identity */
-function chartScatter(rows) {
-  const pairs = rows.filter(r => r.sim != null && r.q12 != null);
-  if (!pairs.length) return emptyFig('No pairs to plot yet.');
-  const W = 520, H = 400, L = 46, R = 22, T = 18, B = 52;
-  const x = v => L + ((v - AX.min) / (AX.max - AX.min)) * (W - L - R);
-  const y = v => T + (1 - (v - AX.min) / (AX.max - AX.min)) * (H - T - B);
-  const r = pearson(pairs.map(p => p.sim), pairs.map(p => p.q12));
-  const grid = [1, 2, 3, 4, 5].map(v => `
-    <line x1="${L}" y1="${y(v)}" x2="${W - R}" y2="${y(v)}" stroke="var(--grid)" stroke-width="1"/>
-    <line x1="${x(v)}" y1="${T}" x2="${x(v)}" y2="${H - B}" stroke="var(--grid)" stroke-width="1"/>
-    <text x="${L - 8}" y="${y(v) + 3.5}" font-size="10" fill="var(--ink-3)" text-anchor="end">${v}</text>
-    <text x="${x(v)}" y="${H - B + 16}" font-size="10" fill="var(--ink-3)" text-anchor="middle">${v}</text>`).join('');
-  const pts = pairs.map(p => `
-    <g>
-      <circle cx="${x(p.sim)}" cy="${y(p.q12)}" r="6.5" fill="var(--a)" stroke="var(--surface)" stroke-width="2"
-        data-tip="<b>${esc(p.code)} · ${esc(progShort(p.programme))}</b><br>Simulation ${r2(p.sim)}<br>Q12 ${r2(p.q12)}<br>Self-rating ${p.anchor == null ? '—' : p.anchor + '/10'}"/>
-      <text x="${x(p.sim) + 11}" y="${y(p.q12) + 3.5}" font-size="10.5" fill="var(--ink)">${esc(p.code)}</text>
-    </g>`).join('');
-  return `<figure>
-    <svg class="viz" viewBox="0 0 ${W} ${H}" role="img"
-      aria-label="Simulation index against Q12 index per respondent, with the line of perfect agreement">
-      ${grid}
-      <line x1="${x(1)}" y1="${y(1)}" x2="${x(5)}" y2="${y(5)}" stroke="var(--dash)" stroke-width="1.5" stroke-dasharray="5 4"/>
-      <text x="${x(4.35)}" y="${y(4.35) - 8}" font-size="9.5" fill="var(--ink-3)">perfect agreement</text>
-      ${pts}
-      <text x="${(L + W - R) / 2}" y="${H - 14}" font-size="10.5" fill="var(--ink-2)" text-anchor="middle">Mode A · simulation index</text>
-      <text x="14" y="${(T + H - B) / 2}" font-size="10.5" fill="var(--ink-2)" text-anchor="middle" transform="rotate(-90 14 ${(T + H - B) / 2})">Mode B · Q12 index</text>
-    </svg>
-    <p class="p-note">${r == null
-      ? 'A correlation needs at least three complete pairs to compute.'
-      : `Pearson r = <span class="mono">${r2(r)}</span> across ${pairs.length} pairs. At this n, r is indicative only — read the positions, not the coefficient.`}
-      Points above the dashed line are respondents the Q12 rated higher than the simulation did.</p>
-  </figure>`;
-}
-
-/* V5 · cost of measurement — minutes on task and data captured */
+/* V2 · cost of measurement — minutes on task and data captured */
 function chartCost(rows) {
-  const any = rows.some(r => r.simSecs || r.q12Secs);
+  const any = rows.some(r => r.simSecs);
   if (!any) return emptyFig('No timing data yet.');
-  const W = 640, L = 96, R = 66, T = 10, rowH = 44, barH = 13;
+  const W = 640, L = 96, R = 66, T = 10, rowH = 30, barH = 14;
   const H = T + rows.length * rowH + 26;
-  const maxS = Math.max(60, ...rows.flatMap(r => [r.simSecs || 0, r.q12Secs || 0])) * 1.12;
+  const maxS = Math.max(60, ...rows.map(r => r.simSecs || 0)) * 1.12;
   const x = s => L + (s / maxS) * (W - L - R);
   const ticks = [0, 0.25, 0.5, 0.75, 1].map(f => {
     const s = maxS * f;
@@ -1793,72 +1318,28 @@ function chartCost(rows) {
   }).join('');
   const bars = rows.map((r, i) => {
     const top = T + i * rowH + 4;
-    const bar = (secs, cls, yy, label, pts) => secs == null ? '' :
-      `<rect x="${L}" y="${yy}" width="${Math.max(1, x(secs) - L)}" height="${barH}" rx="3" fill="var(--${cls})"
-        data-tip="<b>${esc(r.code)} · ${label}</b><br>${mmss(secs)} on task<br>${pts} data points captured"/>
-       <text x="${x(secs) + 7}" y="${yy + barH - 3}" font-size="10.5" fill="var(--ink)">${mmss(secs)}</text>`;
+    const bar = r.simSecs == null ? '' :
+      `<rect x="${L}" y="${top}" width="${Math.max(1, x(r.simSecs) - L)}" height="${barH}" rx="3" fill="var(--a)"
+        data-tip="<b>${esc(r.code)}</b><br>${mmss(r.simSecs)} on task<br>${r.points} data points captured"/>
+       <text x="${x(r.simSecs) + 7}" y="${top + barH - 3}" font-size="10.5" fill="var(--ink)">${mmss(r.simSecs)}</text>`;
     return `<g>
       <text x="${L - 10}" y="${top + 11}" font-size="11" fill="var(--ink)" text-anchor="end">${esc(r.code)}</text>
-      <text x="${L - 10}" y="${top + 24}" font-size="9" fill="var(--ink-3)" text-anchor="end">${esc(progShort(r.programme))}</text>
-      ${bar(r.simSecs, 'a', top, 'Mode A', r.pointsA)}
-      ${bar(r.q12Secs, 'b', top + barH + 2, 'Mode B', r.pointsB)}
+      ${bar}
     </g>`;
   }).join('');
-  const mA = median(rows.map(r => r.simSecs).filter(Boolean)), mB = median(rows.map(r => r.q12Secs).filter(Boolean));
-  const pA = mean(rows.map(r => r.pointsA)), pB = mean(rows.map(r => r.pointsB));
-  return `<figure>${legendAB}
-    <svg class="viz" viewBox="0 0 ${W} ${H}" role="img" aria-label="Time on task per respondent for each mode">
+  const mA = median(rows.map(r => r.simSecs).filter(Boolean));
+  const pA = mean(rows.map(r => r.points));
+  return `<figure>
+    <svg class="viz" viewBox="0 0 ${W} ${H}" role="img" aria-label="Time on task per respondent">
       ${ticks}${bars}
       <line x1="${L}" y1="${T}" x2="${L}" y2="${T + rows.length * rowH - 8}" stroke="var(--rule-2)" stroke-width="1"/>
     </svg>
-    <p class="p-note">Median time on task: Mode A <span class="mono">${mmss(mA)}</span> · Mode B <span class="mono">${mmss(mB)}</span>.
-      Mean data points captured per respondent: Mode A <span class="mono">${r0(pA)}</span> · Mode B <span class="mono">${r0(pB)}</span>
-      — the simulation costs ${mA && mB ? r1(mA / mB) : '—'}× the minutes and returns ${pA && pB ? r1(pA / pB) : '—'}× the observations.</p>
+    <p class="p-note">Median time on task <span class="mono">${mmss(mA)}</span>,
+      mean <span class="mono">${r0(pA)}</span> data points captured per respondent.</p>
   </figure>`;
 }
 
-/* V6 · respondent experience — how each mode felt to answer */
-function chartExp(rows) {
-  const has = rows.some(r => Object.keys(r.exp.sim || {}).length);
-  if (!has) return emptyFig('No experience ratings yet.');
-  const W = 640, L = 176, R = 54, T = 10, rowH = 42, barH = 12;
-  const H = T + EXP_ITEMS.length * rowH + 26;
-  const x = v => L + ((v - AX.min) / (AX.max - AX.min)) * (W - L - R);
-  const vgrid = [1, 2, 3, 4, 5].map(v =>
-    `<line x1="${x(v)}" y1="${T}" x2="${x(v)}" y2="${T + EXP_ITEMS.length * rowH - 8}" stroke="var(--grid)" stroke-width="1"/>
-     <text x="${x(v)}" y="${H - 8}" font-size="10" fill="var(--ink-3)" text-anchor="middle">${v}</text>`).join('');
-  const bars = EXP_ITEMS.map((it, i) => {
-    const a = mean(rows.map(r => (r.exp.sim || {})[it.id]).filter(v => v != null));
-    const b = mean(rows.map(r => (r.exp.q12 || {})[it.id]).filter(v => v != null));
-    const top = T + i * rowH + 4;
-    const bar = (v, cls, yy, label) => v == null ? '' :
-      `<rect x="${x(AX.min)}" y="${yy}" width="${Math.max(1, x(v) - x(AX.min))}" height="${barH}" rx="3" fill="var(--${cls})"
-        data-tip="<b>${label}</b><br>${esc(it.t)}<br>Mean agreement ${r2(v)} / 5"/>
-       <text x="${x(v) + 7}" y="${yy + barH - 2}" font-size="10.5" fill="var(--ink)">${r2(v)}</text>`;
-    const words = esc(it.t).split(' ');
-    const half = Math.ceil(words.length / 2);
-    return `<g>
-      <text x="${L - 10}" y="${top + 10}" font-size="10" fill="var(--ink)" text-anchor="end">${words.slice(0, half).join(' ')}</text>
-      <text x="${L - 10}" y="${top + 22}" font-size="10" fill="var(--ink)" text-anchor="end">${words.slice(half).join(' ')}</text>
-      ${bar(a, 'a', top, 'Mode A · simulation')}
-      ${bar(b, 'b', top + barH + 2, 'Mode B · Q12')}
-    </g>`;
-  }).join('');
-  const prefs = rows.map(r => r.exp.preferred).filter(Boolean);
-  const tally = k => prefs.filter(p => p === k).length;
-  return `<figure>${legendAB}
-    <svg class="viz" viewBox="0 0 ${W} ${H}" role="img" aria-label="Mean respondent agreement on four experience statements, per mode">
-      ${vgrid}${bars}
-      <line x1="${x(AX.min)}" y1="${T}" x2="${x(AX.min)}" y2="${T + EXP_ITEMS.length * rowH - 8}" stroke="var(--rule-2)" stroke-width="1"/>
-    </svg>
-    <p class="p-note">Asked which described the job more truthfully:
-      simulation <span class="mono">${tally('sim')}</span> · both equally <span class="mono">${tally('equal')}</span> · Q12 <span class="mono">${tally('q12')}</span>.
-      Preferred measurement cadence: ${['weekly', 'monthly', 'quarterly', 'annual'].map(c =>
-        `${c} <span class="mono">${rows.filter(r => r.exp.cadence === c).length}</span>`).join(' · ')}.</p>
-  </figure>`;
-}
-
-/* V7 · the signal the annual survey cannot see */
+/* V3 · the signal a single annual number would hide */
 function chartTrace(row, opt = {}) {
   const tr = (row.trace || []).map((v, i) => ({ v, i })).filter(p => p.v != null);
   if (!tr.length) return emptyFig('No trace recorded.');
@@ -1868,7 +1349,7 @@ function chartTrace(row, opt = {}) {
   const grid = [1, 2, 3, 4, 5].map(v => yGrid(L, W - R, y(v), v.toFixed(0))).join('');
   const line = tr.map((p, k) => `${k ? 'L' : 'M'}${x(p.i).toFixed(1)} ${y(p.v).toFixed(1)}`).join(' ');
   const area = `${line} L${x(tr[tr.length - 1].i).toFixed(1)} ${y(1)} L${x(tr[0].i).toFixed(1)} ${y(1)} Z`;
-  const q12 = row.q12, avg = mean(tr.map(p => p.v));
+  const avg = mean(tr.map(p => p.v));
   const dots = tr.map((p, k) => {
     const st = STATIONS[p.i];
     const ans = (row.answers || [])[p.i];
@@ -1881,17 +1362,15 @@ function chartTrace(row, opt = {}) {
     ? `<text x="${x(i)}" y="${H - B + 18}" font-size="9" fill="var(--ink-3)" text-anchor="middle">${esc(s.t)}</text>` : '').join('');
   return `<figure>
     <svg class="viz" viewBox="0 0 ${W} ${H}" role="img"
-      aria-label="Engagement score at each station across the simulated workday, against the flat Q12 index">
+      aria-label="Engagement score at each station across the simulated workday">
       ${grid}
       <path d="${area}" fill="var(--a-soft)"/>
       <path d="${line}" fill="none" stroke="var(--a)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-      ${q12 != null ? `<line x1="${L}" y1="${y(q12)}" x2="${W - R}" y2="${y(q12)}" stroke="var(--b)" stroke-width="2" stroke-dasharray="6 4"/>
-        <text x="${W - R}" y="${y(q12) - 7}" font-size="9.5" fill="var(--ink-2)" text-anchor="end">Q12 index ${r2(q12)}</text>` : ''}
       ${dots}${xlab}
       <text x="${L}" y="${H - 8}" font-size="9.5" fill="var(--ink-3)">station time across one retrospective workday</text>
     </svg>
     <p class="p-note">Within-day range <span class="mono">${r2(Math.min(...tr.map(p => p.v)))}–${r2(Math.max(...tr.map(p => p.v)))}</span>,
-      mean <span class="mono">${r2(avg)}</span>. The Q12 returns one number for the whole of this line.</p>
+      mean <span class="mono">${r2(avg)}</span>. A single annual number would be the flat average of this line.</p>
   </figure>`;
 }
 const emptyFig = msg => `<div class="empty"><p class="small">${esc(msg)}</p></div>`;
@@ -1904,11 +1383,10 @@ function renderMethods() {
   setRig({ kind: 'plain', label: 'Instrument design', right: '<button class="ghost" id="exitM">Back to the study</button>' });
   paint(`
     <section style="padding:2.5rem 0 1.5rem">
-      <p class="eyebrow">Design record · Mode A</p>
+      <p class="eyebrow">Design record</p>
       <h1 style="font-size:clamp(1.8rem,4.4vw,2.5rem); margin-top:.7rem">How this instrument was built</h1>
       <p class="lede" style="margin-top:1rem">Every element of the simulation, the dimension it
-      measures, the Q12 item it mirrors, and the arithmetic that turns a choice into a score
-      comparable with a validated survey.</p>
+      measures, and the arithmetic that turns a choice into a score.</p>
     </section>
 
     <div class="card pad stack" style="gap:1rem">
@@ -1918,9 +1396,7 @@ function renderMethods() {
       Kahn's (1990) personal engagement, in which people employ and express themselves physically,
       cognitively and emotionally in role performance. Its expression is the vigour, dedication and
       absorption measured by the UWES (Schaufeli et al., 2002); its antecedents are the job resources
-      of the JD-R model (Bakker &amp; Demerouti, 2007). Gallup's Q12 operationalises the same
-      construct as twelve actionable workplace conditions with demonstrated links to business
-      outcomes (Harter et al., 2002).</p>
+      of the JD-R model (Bakker &amp; Demerouti, 2007).</p>
       <p class="small">Kahn's three psychological conditions — meaningfulness, safety and
       availability — are what the five dimensions below are chosen to span. We follow Macey and
       Schneider (2008) in treating engagement as a state, not a trait: it is a property of the
@@ -1935,16 +1411,12 @@ function renderMethods() {
           <div class="row wrap" style="gap:.6rem; align-items:baseline">
             <span class="dim-k">${d.k}</span>
             <span class="dim-n">${esc(d.name)}</span>
-            <span class="dim-src">Mode A: ${STATIONS.filter(s => s.dim === d.id).length} stations · Mode B: ${d.q12.map(n => 'Q' + n).join(', ')}</span>
+            <span class="tiny mono">${STATIONS.filter(s => s.dim === d.id).length} stations</span>
           </div>
           <p class="small" style="margin-top:.45rem"><strong>Why it belongs:</strong> ${esc(d.why)}</p>
-          <p class="small" style="margin-top:.3rem"><strong>How Mode A measures it:</strong> ${esc(d.op)}</p>
+          <p class="small" style="margin-top:.3rem"><strong>How the simulation measures it:</strong> ${esc(d.op)}</p>
           <p class="tiny" style="margin-top:.3rem">${esc(d.theory)}</p>
         </div>`).join('')}
-      <p class="p-note">The station count per dimension equals the Q12 item count per dimension
-      (${DIMS.map(d => d.k + ':' + d.q12.length).join(' · ')}). This weight-matching is deliberate: it
-      means any gap between the two indices is attributable to <em>method</em> — concrete scenario
-      recall against abstract Likert agreement — and not to one instrument covering more ground.</p>
     </div>
 
     <div class="card pad stack" style="gap:.2rem; margin-top:1.25rem">
@@ -1957,8 +1429,8 @@ function renderMethods() {
         <details class="bank">
           <summary>
             <span>${esc(st.t)}</span>
-            <span><b>${esc(st.prompt)}</b><br><span class="tiny">${DIM[st.dim].k} ${esc(DIM[st.dim].name)} · mirrors ${esc(st.mirrors)}</span></span>
-            <span class="tiny">A${String(i + 1).padStart(2, '0')}</span>
+            <span><b>${esc(st.prompt)}</b><br><span class="tiny">${DIM[st.dim].k} ${esc(DIM[st.dim].name)}</span></span>
+            <span class="tiny">${String(i + 1).padStart(2, '0')}</span>
           </summary>
           <div class="ladder">
             <p class="small" style="margin-bottom:.4rem; font-style:italic">${esc(st.scene)}</p>
@@ -1969,41 +1441,37 @@ function renderMethods() {
 
     <div class="card pad stack" style="gap:.7rem; margin-top:1.25rem">
       <p class="eyebrow">4 · Scoring model</p>
-      <h3>Turning choices into an index comparable with the Q12</h3>
+      <h3>Turning choices into an engagement index</h3>
       <ol class="small" style="margin:.3rem 0 0; padding-left:1.2rem; display:flex; flex-direction:column; gap:.5rem">
         <li>Each station option carries a raw value of 4, 3, 2 or 1, ordered from full presence of the
         condition to its active absence.</li>
-        <li>Raw values are linearly rescaled onto the Q12's five-point metric:
+        <li>Raw values are linearly rescaled onto a five-point metric:
         <span class="mono">s = 1 + (raw − 1) × 4/3</span>, giving
-        <span class="mono">${[1,2,3,4].map(v => r2(rescale4to5(v))).join(' · ')}</span>. The endpoints
-        of the two instruments therefore coincide exactly.</li>
-        <li>A dimension score is the unweighted mean of its stations (Mode A) or of its mapped Q12
-        items (Mode B).</li>
+        <span class="mono">${[1,2,3,4].map(v => r2(rescale4to5(v))).join(' · ')}</span>.</li>
+        <li>A dimension score is the unweighted mean of its stations.</li>
         <li>The <strong>engagement index</strong> is the unweighted mean of the five dimension scores,
-        so each dimension counts equally in each mode. Reported on 1–5 and rescaled to 0–100 as
+        so each dimension counts equally. Reported on 1–5 and rescaled to 0–100 as
         <span class="mono">(s − 1) / 4 × 100</span>.</li>
-        <li>Bands follow Gallup's convention: <span class="mono">≥ 4.00</span> engaged,
+        <li>Bands follow Gallup Q12 convention: <span class="mono">≥ 4.00</span> engaged,
         <span class="mono">3.00–3.99</span> not engaged, <span class="mono">&lt; 3.00</span> actively
         disengaged.</li>
       </ol>
       <p class="p-note">Interaction signals — per-station response latency, the number of times an
       answer was changed, and the within-day trace — are recorded but deliberately excluded from the
-      index. They are diagnostic, not construct-valid, and mixing them into the score would make the
-      two modes non-comparable.</p>
+      index. They are diagnostic, not construct-valid.</p>
     </div>
 
     <div class="card pad stack" style="gap:.7rem; margin-top:1.25rem">
       <p class="eyebrow">5 · Administration</p>
       <h3>How a session is run</h3>
-      <p class="small">Both modes are retrospective by construction: every stem names the previous
-      employer, and the framing is repeated at the landing page, the intake screen, the Mode A
-      briefing and the Mode B bridge. Mode A is always administered first, so that the twelve Q12
-      statements cannot prime the scenario choices.</p>
+      <p class="small">The simulation is retrospective by construction: every stem names the previous
+      employer, and the framing is repeated at the landing page, the intake screen and the simulation
+      briefing.</p>
       <p class="small">For three respondents the intended procedure is a briefed sitting on the
-      group's own device: consent, Mode A, Mode B, experience block, all in one session of about
-      fifteen minutes. Each completed run then appears in the researcher view immediately. Where a
-      respondent completes the study on their own device instead, the closing screen issues a result
-      code containing their full anonymised record, which the group pastes into
+      group's own device: consent, then the simulation end to end, in one session of about ten
+      minutes. Each completed run then appears in the researcher view immediately. Where a respondent
+      completes the study on their own device instead, the closing screen issues a result code
+      containing their full anonymised record, which the group pastes into
       <em>Researcher view → Data &amp; export → Add a respondent</em>.</p>
       <p class="p-note">Respondents are identified only as R1–R3 with their programme and
       work-history metadata. No name, email or employer name is collected at any point.</p>
@@ -2013,16 +1481,14 @@ function renderMethods() {
       <p class="eyebrow">6 · Limitations and ethics</p>
       <h3>What this instrument cannot claim</h3>
       <ul class="small" style="margin:.2rem 0 0; padding-left:1.2rem; display:flex; flex-direction:column; gap:.45rem">
-        <li><strong>Three paired observations.</strong> No reliability or validity coefficient is
-        estimable at this n. Correlations shown in the researcher view are descriptive only.</li>
-        <li><strong>Retrospective recall.</strong> Both modes ask about a job the respondent has
-        already left, so both are exposed to recall decay and to post-hoc rationalisation of the
-        decision to leave. This is a constant across modes, which protects the comparison but not the
-        absolute levels.</li>
-        <li><strong>Common method variance.</strong> Both instruments are self-report, collected in
-        one sitting from one source, which is the classic condition for inflated convergence
-        (Podsakoff et al., 2003). Administering Mode A first and separating the two with a bridge
-        screen mitigates but does not remove it.</li>
+        <li><strong>Three observations.</strong> No reliability or validity coefficient is estimable
+        at this n. Comparisons shown in the researcher view are descriptive only.</li>
+        <li><strong>Retrospective recall.</strong> The simulation asks about a job the respondent has
+        already left, so it is exposed to recall decay and to post-hoc rationalisation of the decision
+        to leave.</li>
+        <li><strong>Self-report bias.</strong> A single self-report instrument collected in one
+        sitting is still subject to social desirability and common method effects (Podsakoff et al.,
+        2003), even without a second instrument to inflate convergence with.</li>
         <li><strong>Social desirability.</strong> Scenario options that describe silence or
         disengagement may be under-selected even though nothing is scored as good or bad.</li>
         <li><strong>Surveillance risk.</strong> The case for real-time measurement is also the case
@@ -2031,9 +1497,6 @@ function renderMethods() {
         are anonymised, retrospective, and collected with explicit consent; in an organisational
         deployment they would need a stated retention period, aggregation floors below which no team
         is reported, and a real right to decline that carries no career cost.</li>
-        <li><strong>Adaptation, not replication.</strong> The Q12 items are reworded into the past
-        tense for a former employer. This is required by the study design but means the instrument is
-        no longer the validated Q12, and the published benchmarks do not strictly apply.</li>
       </ul>
     </div>
 
@@ -2042,8 +1505,6 @@ function renderMethods() {
       <div class="stack" style="gap:.6rem; margin-top:.3rem">
         ${REFS.map(r => `<p class="small" style="padding-left:1.6rem; text-indent:-1.6rem">${r}</p>`).join('')}
       </div>
-      <p class="p-note">Q12<sup>®</sup> is a trademark of Gallup, Inc. The retrospective adaptation
-      used in Mode B is for educational coursework and is not a Gallup product or endorsement.</p>
     </div>
 
     <div class="btn-row" style="margin-top:1.75rem">
@@ -2058,7 +1519,7 @@ function renderMethods() {
 }
 
 /* ── 19 · RESEARCHER VIEW ──────────────────────────────────────────  */
-const AV = { tab: 'comparison', pilots: false, dimSel: 'all', traceSel: null };
+const AV = { tab: 'results', pilots: false, dimSel: 'all', traceSel: null };
 let dbRuns = [], dbUnsub = null;
 
 function allRuns() {
@@ -2066,7 +1527,7 @@ function allRuns() {
   localRuns().forEach(r => byId.set(r.id, r));
   dbRuns.forEach(r => byId.set(r.id, r));        /* the store wins on conflict */
   return [...byId.values()]
-    .filter(r => r && r.a && r.b && (r.completedAt || (r.b.endedAt && r.a.endedAt)))
+    .filter(r => r && r.a && r.completedAt)
     .sort((a, b) => String(a.code).localeCompare(String(b.code)) || String(a.completedAt).localeCompare(String(b.completedAt)));
 }
 function activeRows() {
@@ -2091,22 +1552,21 @@ function renderAnalysis() {
   const pilotN = all.filter(r => r.testRun).length;
   paint(`
     <section style="padding:2.25rem 0 1.25rem">
-      <p class="eyebrow">Researcher view · Mode A vs Mode B</p>
-      <h2 style="margin-top:.5rem">Which instrument measured engagement better?</h2>
+      <p class="eyebrow">Researcher view</p>
+      <h2 style="margin-top:.5rem">What the simulation found</h2>
       <p class="small" style="margin-top:.7rem; max-width:62ch">
-        Every figure below is computed from the paired observations in the store — the same three
-        respondents answering the same construct twice. Both indices sit on a 1–5 metric built from
-        the five dimensions, equally weighted, so they are directly comparable.
+        Every figure below is computed from the completed runs in the store. The engagement index
+        sits on a 1–5 metric built from the five dimensions, equally weighted.
       </p>
       <div class="row wrap" style="gap:.9rem; margin-top:1rem">
-        <span class="tiny mono">${rows.length} paired observation${rows.length === 1 ? '' : 's'} in analysis</span>
+        <span class="tiny mono">${rows.length} respondent${rows.length === 1 ? '' : 's'} in analysis</span>
         <span id="dbSlot2"></span>
         ${pilotN ? `<label class="check tiny" style="align-items:center"><input type="checkbox" id="pilots" ${AV.pilots ? 'checked' : ''}><span>include ${pilotN} pilot run${pilotN === 1 ? '' : 's'}</span></label>` : ''}
       </div>
     </section>
 
     <div class="tabs" role="tablist">
-      ${[['comparison', 'Comparison'], ['data', 'Data & export'], ['qual', 'What only Mode A caught']].map(([k, l]) =>
+      ${[['results', 'Results'], ['data', 'Data & export'], ['qual', 'Qualitative']].map(([k, l]) =>
         `<button class="tab" role="tab" data-tab="${k}" aria-selected="${AV.tab === k}">${l}</button>`).join('')}
     </div>
     <div id="tabBody"></div>
@@ -2118,7 +1578,7 @@ function renderAnalysis() {
   if (pl) pl.onchange = () => { AV.pilots = pl.checked; renderAnalysis(); };
   stage.querySelectorAll('.tab').forEach(t => t.onclick = () => { AV.tab = t.dataset.tab; renderAnalysis(); });
   const body = document.getElementById('tabBody');
-  body.innerHTML = AV.tab === 'comparison' ? tabComparison(rows) : AV.tab === 'data' ? tabData(rows) : tabQual(rows);
+  body.innerHTML = AV.tab === 'results' ? tabResults(rows) : AV.tab === 'data' ? tabData(rows) : tabQual(rows);
   wireTab(rows);
   bindTips(stage);
 }
@@ -2128,10 +1588,9 @@ function renderGate() {
     <section style="padding:4rem 0 1rem; max-width:34rem">
       <p class="eyebrow">Researcher view</p>
       <h2 style="margin-top:.5rem">This view is for the project group</h2>
-      <p class="small" style="margin-top:.8rem">It shows every stored response and the comparative
-      analysis. Enter the group's access code to continue. This is a courtesy screen that keeps
-      respondents out of the results, not a security control — anyone with the code can read the
-      anonymised data.</p>
+      <p class="small" style="margin-top:.8rem">It shows every stored response. Enter the group's
+      access code to continue. This is a courtesy screen that keeps respondents out of the results,
+      not a security control — anyone with the code can read the anonymised data.</p>
       <div class="btn-row" style="margin-top:1.4rem">
         <input type="text" id="gate" placeholder="Access code" style="max-width:12rem" autocomplete="off">
         <button class="btn" id="gateGo">Continue</button>
@@ -2150,65 +1609,39 @@ function renderGate() {
   document.getElementById('gateBack').onclick = e => { e.preventDefault(); location.hash = ''; boot(); };
 }
 
-/* ── 20 · TAB · COMPARISON ─────────────────────────────────────────  */
-function tabComparison(rows) {
+/* ── 20 · TAB · RESULTS ────────────────────────────────────────────  */
+function tabResults(rows) {
   if (!rows.length) return `
     <div class="empty">
-      <h3 style="margin-bottom:.5rem">No paired observations yet</h3>
+      <h3 style="margin-bottom:.5rem">No responses yet</h3>
       <p class="small" style="max-width:44ch; margin:0 auto">Send the study link to your three
       respondents — one from MBA Core, one from MBA HRM, one from MBA Business Analytics. Each
-      completed run appears here as one paired observation. You can also paste a respondent's result
-      code under <em>Data &amp; export</em>.</p>
+      completed run appears here. You can also paste a respondent's result code under
+      <em>Data &amp; export</em>.</p>
     </div>`;
   const sims = rows.map(r => r.sim).filter(v => v != null);
-  const q12s = rows.map(r => r.q12).filter(v => v != null);
-  const ds = rows.map(r => r.delta).filter(v => v != null);
-  const r = pearson(rows.map(x => x.sim), rows.map(x => x.q12));
-  const anchorGapA = mean(rows.filter(x => x.anchor5 != null).map(x => Math.abs(x.sim - x.anchor5)));
-  const anchorGapB = mean(rows.filter(x => x.anchor5 != null).map(x => Math.abs(x.q12 - x.anchor5)));
-  const closer = (anchorGapA == null || anchorGapB == null) ? null : (anchorGapA < anchorGapB ? 'the simulation' : anchorGapA > anchorGapB ? 'the Q12' : 'neither');
+  const anchorGap = mean(rows.filter(x => x.anchor5 != null).map(x => Math.abs(x.sim - x.anchor5)));
+  const mSecs = median(rows.map(r => r.simSecs).filter(Boolean));
+  const bands = { g: 0, w: 0, c: 0 };
+  rows.forEach(r => { const b = band(r.sim).cls; if (bands[b] != null) bands[b]++; });
   const traceRow = rows.find(x => x.code === AV.traceSel) || rows[0];
 
   return `
     <div class="kpis">
-      <div class="kpi"><span class="kpi-l">Mode A mean</span><span class="kpi-v">${r2(mean(sims))}</span><span class="kpi-s">simulation index, of 5</span></div>
-      <div class="kpi"><span class="kpi-l">Mode B mean</span><span class="kpi-v">${r2(mean(q12s))}</span><span class="kpi-s">Q12 index, of 5</span></div>
-      <div class="kpi"><span class="kpi-l">Mean gap</span><span class="kpi-v">${ds.length ? (mean(ds) > 0 ? '+' : '') + r2(mean(ds)) : '—'}</span><span class="kpi-s">A − B, index points</span></div>
-      <div class="kpi"><span class="kpi-l">Widest gap</span><span class="kpi-v">${ds.length ? r2(Math.max(...ds.map(Math.abs))) : '—'}</span><span class="kpi-s">largest single disagreement</span></div>
-      <div class="kpi"><span class="kpi-l">Pearson r</span><span class="kpi-v">${r == null ? '—' : r2(r)}</span><span class="kpi-s">n = ${rows.length}, indicative</span></div>
-      <div class="kpi"><span class="kpi-l">Closer to self-rating</span><span class="kpi-v" style="font-size:1.05rem; font-family:var(--ff-d)">${closer == null ? '—' : closer === 'the simulation' ? 'Mode A' : closer === 'the Q12' ? 'Mode B' : 'Tied'}</span><span class="kpi-s">${anchorGapA == null ? 'no anchor data' : 'mean |gap| ' + r2(anchorGapA) + ' vs ' + r2(anchorGapB)}</span></div>
+      <div class="kpi"><span class="kpi-l">Mean index</span><span class="kpi-v">${r2(mean(sims))}</span><span class="kpi-s">of 5, across the sample</span></div>
+      <div class="kpi"><span class="kpi-l">Engaged</span><span class="kpi-v">${bands.g}/${rows.length}</span><span class="kpi-s">index ≥ 4.00</span></div>
+      <div class="kpi"><span class="kpi-l">Actively disengaged</span><span class="kpi-v">${bands.c}/${rows.length}</span><span class="kpi-s">index &lt; 3.00</span></div>
+      <div class="kpi"><span class="kpi-l">Self-rating gap</span><span class="kpi-v">${anchorGap == null ? '—' : r2(anchorGap)}</span><span class="kpi-s">mean |index − self-rating|</span></div>
+      <div class="kpi"><span class="kpi-l">Median time on task</span><span class="kpi-v" style="font-size:1.3rem">${mmss(mSecs)}</span><span class="kpi-s">per respondent</span></div>
     </div>
 
     ${coverageStrip(rows)}
 
     <div class="panels" style="margin-top:1.25rem">
       <div class="panel panel-full">
-        <p class="p-eyebrow">Figure 1 · convergence</p>
-        <p class="p-title">Do the two instruments place the same person at the same level?</p>
-        <p class="p-q">Each vertical pair is one respondent measured twice. The length of the connector is the disagreement.</p>
-        ${chartPaired(rows)}
-        <p class="p-note">${narrateConvergence(rows)}</p>
-      </div>
-
-      <div class="panel">
-        <p class="p-eyebrow">Figure 2 · agreement</p>
-        <p class="p-title">Simulation against Q12, respondent by respondent</p>
-        <p class="p-q">Distance from the dashed line is the size and direction of the disagreement.</p>
-        ${chartScatter(rows)}
-      </div>
-
-      <div class="panel">
-        <p class="p-eyebrow">Figure 3 · direction of the bias</p>
-        <p class="p-title">Which mode reads an engagement higher, and by how much</p>
-        <p class="p-q">Positive bars: the simulation read higher than the Q12 for that respondent.</p>
-        ${chartDelta(rows)}
-      </div>
-
-      <div class="panel panel-full">
-        <p class="p-eyebrow">Figure 4 · where the modes diverge</p>
-        <p class="p-title">The same five dimensions, measured two ways</p>
-        <p class="p-q">Both instruments carry the same number of items per dimension, so a gap here is
-        a difference of method — scenario recall against abstract agreement — not of coverage.</p>
+        <p class="p-eyebrow">Figure 1 · dimension profile</p>
+        <p class="p-title">Where the sample is strongest, and where it isn't</p>
+        <p class="p-q">Mean score per dimension across the respondents in view.</p>
         <div class="chips" style="margin:.7rem 0 .3rem">
           <button class="chip" data-dim="all" aria-pressed="${AV.dimSel === 'all'}">All respondents · mean</button>
           ${rows.map(x => `<button class="chip" data-dim="${esc(x.code)}" aria-pressed="${AV.dimSel === x.code}">${esc(x.code)} · ${esc(progShort(x.programme))}</button>`).join('')}
@@ -2218,24 +1651,16 @@ function tabComparison(rows) {
       </div>
 
       <div class="panel">
-        <p class="p-eyebrow">Figure 5 · cost of measurement</p>
+        <p class="p-eyebrow">Figure 2 · cost of measurement</p>
         <p class="p-title">Minutes spent, observations returned</p>
-        <p class="p-q">The real-time case has to survive this chart: engagement measured often must be cheap to answer.</p>
+        <p class="p-q">A frequent pulse only works if a single sitting is cheap to answer.</p>
         ${chartCost(rows)}
       </div>
 
-      <div class="panel">
-        <p class="p-eyebrow">Figure 6 · respondent experience</p>
-        <p class="p-title">How each instrument felt to the people answering it</p>
-        <p class="p-q">Mean agreement, 1–5, on the same four statements asked about both modes.</p>
-        ${chartExp(rows)}
-      </div>
-
       <div class="panel panel-full">
-        <p class="p-eyebrow">Figure 7 · what an annual number hides</p>
+        <p class="p-eyebrow">Figure 3 · what an annual number hides</p>
         <p class="p-title">One respondent's engagement across the simulated day</p>
-        <p class="p-q">The dashed line is that respondent's entire Q12 result. The solid line is what
-        the simulation saw happening underneath it.</p>
+        <p class="p-q">A single annual score is the flat average of a line that is never flat.</p>
         <div class="chips" style="margin:.7rem 0 .3rem">
           ${rows.map(x => `<button class="chip" data-trace="${esc(x.code)}" aria-pressed="${traceRow && x.code === traceRow.code}">${esc(x.code)} · ${esc(progShort(x.programme))}</button>`).join('')}
         </div>
@@ -2243,20 +1668,11 @@ function tabComparison(rows) {
       </div>
     </div>
 
-    ${recommendations(rows)}
-
-    <div class="card pad" style="margin-top:1.5rem">
-      <p class="p-eyebrow">Reading of the evidence</p>
-      <p class="p-title" style="margin-bottom:.6rem">What this sample supports, and what it does not</p>
-      <p class="small">${narrateVerdict(rows)}</p>
-      <p class="p-note">Three paired observations cannot establish reliability or validity. What they
-      can do is show whether the two methods tell the same story about the same person, where they
-      part company, and what each costs to run — which is what the figures above are for.</p>
-    </div>`;
+    ${recommendations(rows)}`;
 }
 
-/* Coverage of the three required programmes, and the integrity of the
-   pairing — the two things Component B is assessed on. */
+/* Coverage of the three required programmes — the thing Component B
+   is assessed on. */
 function coverageStrip(rows) {
   const cells = PROGRAMMES.map(pr => {
     const hit = rows.filter(r => r.programme === pr);
@@ -2265,136 +1681,79 @@ function coverageStrip(rows) {
       <p class="eyebrow">${esc(pr)}</p>
       ${hit.length
         ? `<p class="mono" style="font-size:.95rem; color:var(--ink)">${hit.map(h => esc(h.code)).join(', ')} collected</p>
-           <p class="tiny">${esc(r.bio.role || 'role not given')} · ${esc(r.bio.industry || 'sector not given')} · ${r.bio.months ?? '—'} months</p>
-           <p class="tiny">paired: Mode A ${r.sim != null ? '✓' : '✗'} · Mode B ${r.q12 != null ? '✓' : '✗'} · retrospective framing applied in both</p>`
+           <p class="tiny">${esc(r.bio.role || 'role not given')} · ${esc(r.bio.industry || 'sector not given')} · ${r.bio.months ?? '—'} months</p>`
         : `<p class="mono" style="font-size:.95rem; color:var(--ink-2)">not yet collected</p>
            <p class="tiny">One respondent from this programme with prior full-time experience is still required.</p>`}
     </div>`;
   }).join('');
   const n = PROGRAMMES.filter(pr => rows.some(r => r.programme === pr)).length;
-  const complete = rows.filter(r => r.sim != null && r.q12 != null).length;
   return `<div class="stack" style="gap:.6rem; margin-top:.5rem">
     <div class="row wrap" style="gap:.7rem; justify-content:space-between">
-      <p class="p-eyebrow">Sample coverage · ${n} of 3 programmes · ${complete} complete pair${complete === 1 ? '' : 's'}</p>
-      ${n === 3 ? '<p class="tiny">Coverage requirement met.</p>' : '<p class="tiny">Coverage incomplete — the comparison is not yet representative of all three programmes.</p>'}
+      <p class="p-eyebrow">Sample coverage · ${n} of 3 programmes · ${rows.length} respondent${rows.length === 1 ? '' : 's'}</p>
+      ${n === 3 ? '<p class="tiny">Coverage requirement met.</p>' : '<p class="tiny">Coverage incomplete — the sample is not yet representative of all three programmes.</p>'}
     </div>
     <div class="cover">${cells}</div>
   </div>`;
 }
 
-function narrateConvergence(rows) {
-  const ds = rows.map(r => r.delta).filter(v => v != null);
-  if (!ds.length) return 'No paired scores yet.';
-  const bias = mean(ds), worst = rows.filter(r => r.delta != null).sort((a, b) => Math.abs(b.delta) - Math.abs(a.delta))[0];
-  const sameBand = rows.filter(r => band(r.sim).label === band(r.q12).label).length;
-  return `Across ${ds.length} respondent${ds.length === 1 ? '' : 's'} the simulation ran
-    ${Math.abs(bias) < 0.05 ? 'level with' : (bias > 0 ? 'above' : 'below')} the Q12 by
-    <span class="mono">${r2(Math.abs(bias))}</span> index points on average, and the two instruments
-    assigned the same engagement band to <span class="mono">${sameBand}/${rows.length}</span> of them.
-    The widest single disagreement is ${esc(worst.code)} at <span class="mono">${r2(Math.abs(worst.delta))}</span>
-    points — ${worst.delta > 0 ? 'the scenarios recovered engagement the questionnaire missed' : 'the questionnaire returned a more favourable reading than the scenarios did'}.`;
-}
 function narrateDims(rows) {
-  const gaps = DIMS.map(d => {
-    const a = mean(rows.map(r => r.simDims[d.id]).filter(v => v != null));
-    const b = mean(rows.map(r => r.q12Dims[d.id]).filter(v => v != null));
-    return { d, a, b, g: (a != null && b != null) ? a - b : null };
-  }).filter(x => x.g != null);
-  if (!gaps.length) return 'No dimension data yet.';
-  const wide = [...gaps].sort((x, y) => Math.abs(y.g) - Math.abs(x.g))[0];
-  const tight = [...gaps].sort((x, y) => Math.abs(x.g) - Math.abs(y.g))[0];
-  return `The modes agree most closely on <strong>${esc(tight.d.name)}</strong>
-    (gap <span class="mono">${r2(Math.abs(tight.g))}</span>) and diverge most on
-    <strong>${esc(wide.d.name)}</strong> (gap <span class="mono">${r2(Math.abs(wide.g))}</span>,
-    ${wide.g > 0 ? 'simulation higher' : 'Q12 higher'}). Dimensions that ask a respondent to recall a
-    concrete episode — recognition, voice — are where a scenario and an abstract Likert statement are
-    least likely to return the same number.`;
+  const levels = DIMS.map(d => ({ d, a: mean(rows.map(r => r.simDims[d.id]).filter(v => v != null)) })).filter(x => x.a != null);
+  if (!levels.length) return 'No dimension data yet.';
+  const high = [...levels].sort((x, y) => y.a - x.a)[0];
+  const low = [...levels].sort((x, y) => x.a - y.a)[0];
+  return `The sample scores highest on <strong>${esc(high.d.name)}</strong>
+    (mean <span class="mono">${r2(high.a)}</span>) and lowest on <strong>${esc(low.d.name)}</strong>
+    (mean <span class="mono">${r2(low.a)}</span>) — a spread of
+    <span class="mono">${r2(high.a - low.a)}</span> index points.`;
 }
 /* Recommendations are derived, not asserted: dimensions are ranked by
-   their level across both modes, and each recommendation carries the
+   their level across the sample, and each recommendation carries the
    evidence line it rests on. */
 function recommendations(rows) {
   if (!rows.length) return '';
-  const scored = DIMS.map(d => {
-    const a = mean(rows.map(r => r.simDims[d.id]).filter(v => v != null));
-    const b = mean(rows.map(r => r.q12Dims[d.id]).filter(v => v != null));
-    const both = [a, b].filter(v => v != null);
-    return { d, a, b, level: mean(both), gap: (a != null && b != null) ? a - b : null };
-  }).filter(x => x.level != null).sort((x, y) => x.level - y.level);
+  const scored = DIMS.map(d => ({ d, a: mean(rows.map(r => r.simDims[d.id]).filter(v => v != null)) }))
+    .filter(x => x.a != null).sort((x, y) => x.a - y.a);
 
   const mA = median(rows.map(r => r.simSecs).filter(Boolean));
-  const mB = median(rows.map(r => r.q12Secs).filter(Boolean));
-  const pA = mean(rows.map(r => r.pointsA)), pB = mean(rows.map(r => r.pointsB));
-  const cad = ['weekly', 'monthly', 'quarterly', 'annual'].map(c => ({ c, n: rows.filter(r => r.exp.cadence === c).length }));
-  const wantsFrequent = cad.filter(x => x.c === 'weekly' || x.c === 'monthly').reduce((s, x) => s + x.n, 0);
-  const widest = [...scored].sort((x, y) => Math.abs(y.gap || 0) - Math.abs(x.gap || 0))[0];
-  const sameBand = rows.filter(r => band(r.sim).label === band(r.q12).label).length;
+  const pA = mean(rows.map(r => r.points));
+  const ranges = rows.map(r => (r.trace || []).filter(v => v != null)).filter(t => t.length)
+    .map(t => Math.max(...t) - Math.min(...t));
+  const widestRange = ranges.length ? Math.max(...ranges) : null;
   const incidents = rows.filter(r => r.incident).length;
 
   const items = [
     ...scored.slice(0, 2).map(x => ({
       t: `Act on ${x.d.name.toLowerCase()} first`,
-      e: `Weakest dimension across both instruments — Mode A ${r2(x.a)}, Mode B ${r2(x.b)}, mean ${r2(x.level)} of 5.`,
+      e: `Weakest dimension in the sample — mean ${r2(x.a)} of 5.`,
       a: x.d.action
     })),
     {
-      t: 'Keep the annual survey as the benchmark, not as the diagnostic',
-      e: `The two instruments placed ${sameBand} of ${rows.length} respondents in the same engagement band, with a mean gap of ${r2(Math.abs(mean(rows.map(r => r.delta).filter(v => v != null))))} index points — close enough to trend against, too coarse to act on.`,
-      a: 'Retain a validated annual instrument for external benchmarking and year-on-year comparability. Do not ask it to tell you where in the working week engagement is lost; it has no field for that.'
+      t: 'Run the pulse at a cadence respondents can sustain',
+      e: `A single sitting takes <span class="mono">${mmss(mA)}</span> and returns <span class="mono">${r0(pA)}</span> data points per respondent.`,
+      a: 'A short, frequent pulse beats a long, occasional one: scope each cycle to one or two dimensions so a sitting stays under five minutes, and rotate through the five over a quarter.'
     },
     {
-      t: `Run the scenario pulse ${wantsFrequent > rows.length / 2 ? 'monthly' : 'quarterly'}, on the evidence of what respondents will tolerate`,
-      e: `Respondents chose: ${cad.map(x => x.c + ' ' + x.n).join(' · ')}. Mode A costs ${mmss(mA)} against the Q12's ${mmss(mB)} and returns ${pA && pB ? r1(pA / pB) : '—'}× the observations per respondent.`,
-      a: `Deploy the simulation at the cadence respondents actually asked for, scoped to one dimension per cycle so a single sitting stays under five minutes. Frequency is worth more than length: a shorter instrument answered honestly beats a longer one answered dutifully.`
-    },
-    {
-      t: `Treat the ${widest && widest.gap != null ? widest.d.name.toLowerCase() : 'largest'} divergence as a measurement finding, not noise`,
-      e: widest && widest.gap != null
-        ? `Widest mode disagreement: ${esc(widest.d.name)}, ${r2(Math.abs(widest.gap))} points, ${widest.gap > 0 ? 'simulation higher' : 'Q12 higher'}.`
-        : 'Dimension-level gaps require both modes scored for at least one respondent.',
-      a: 'Where a scenario and a Likert statement disagree on the same dimension, the abstract item is usually measuring a belief about the workplace while the scenario is measuring a remembered event. Report both and say which decision each is fit for.'
+      t: 'Treat the within-day dip as a measurement finding, not noise',
+      e: widestRange != null
+        ? `Widest single-respondent range across the day: <span class="mono">${r2(widestRange)}</span> index points.`
+        : 'Within-day range requires at least one completed run.',
+      a: 'A flat annual number cannot show where in the day engagement is lost. Where the trace dips sharply, look at what that station describes and act on the specific moment, not the average.'
     },
     {
       t: 'Instrument the qualitative channel deliberately',
-      e: `${incidents} of ${rows.length} respondents recorded a critical incident in their own words; the Q12 returned ${r0(pB)} numbers and no text.`,
+      e: `${incidents} of ${rows.length} respondent${rows.length === 1 ? '' : 's'} recorded a critical incident in their own words.`,
       a: 'Attach one open prompt to every pulse and route the responses to the manager who can act, with identity stripped. The index tells you the level; only the incident tells you the cause.'
     }
   ];
   return `<div class="card pad" style="margin-top:1.5rem">
     <p class="p-eyebrow">Recommendations · prioritised, and traced to the figures above</p>
     <p class="p-title" style="margin-bottom:.3rem">What we would tell an HR function to do with this</p>
-    <p class="p-q" style="margin-bottom:.4rem">Ordered by the strength of the evidence behind them. Items 1–2 are read off the dimension profile; 3–5 from the cost, experience and divergence figures.</p>
+    <p class="p-q" style="margin-bottom:.4rem">Ordered by the strength of the evidence behind them. Items 1–2 are read off the dimension profile; 3–4 from the trace and qualitative figures.</p>
     ${items.map((it, i) => `<div class="rec">
       <span class="rec-n">${String(i + 1).padStart(2, '0')}</span>
       <div><p class="rec-t">${esc(it.t)}</p><p class="rec-e">Evidence · ${it.e}</p><p class="small">${esc(it.a)}</p></div>
     </div>`).join('')}
   </div>`;
-}
-
-function narrateVerdict(rows) {
-  const ds = rows.map(r => r.delta).filter(v => v != null);
-  if (!ds.length) return 'Collect at least one paired observation to populate this reading.';
-  const bias = mean(ds);
-  const mA = median(rows.map(r => r.simSecs).filter(Boolean)), mB = median(rows.map(r => r.q12Secs).filter(Boolean));
-  const pA = mean(rows.map(r => r.pointsA)), pB = mean(rows.map(r => r.pointsB));
-  const prefSim = rows.filter(r => r.exp.preferred === 'sim').length;
-  const anchorGapA = mean(rows.filter(x => x.anchor5 != null).map(x => Math.abs(x.sim - x.anchor5)));
-  const anchorGapB = mean(rows.filter(x => x.anchor5 != null).map(x => Math.abs(x.q12 - x.anchor5)));
-  return `On the level of the construct the two instruments are close: a mean gap of
-    <span class="mono">${(bias > 0 ? '+' : '') + r2(bias)}</span> index points on a five-point scale.
-    They are not close on what they return for the cost. The Q12 takes
-    <span class="mono">${mmss(mB)}</span> and yields <span class="mono">${r0(pB)}</span> numbers per
-    respondent; the simulation takes <span class="mono">${mmss(mA)}</span> and yields
-    <span class="mono">${r0(pA)}</span> observations plus a within-day trace, a recalled critical
-    incident and, where it ran, an adaptive probe.
-    ${anchorGapA != null ? `Against each respondent's own overall self-rating, ${anchorGapA < anchorGapB ? 'the simulation' : anchorGapA > anchorGapB ? 'the Q12' : 'neither mode'} sat closer
-    (mean absolute gap <span class="mono">${r2(anchorGapA)}</span> against <span class="mono">${r2(anchorGapB)}</span>).` : ''}
-    ${prefSim ? `<span class="mono">${prefSim}/${rows.length}</span> respondents judged the simulation the
-    more truthful description of the job.` : ''}
-    The defensible reading is therefore not that one instrument wins outright, but that they answer
-    different questions: the Q12 is the cheaper, comparable, benchmarkable annual measure, while the
-    simulation is the diagnostic that says <em>where</em> in a working day engagement is won or lost —
-    which is the thing a manager can actually act on.`;
 }
 
 /* ── 21 · TAB · DATA & EXPORT ──────────────────────────────────────  */
@@ -2404,10 +1763,8 @@ function tabData(rows) {
       <table>
         <thead><tr>
           <th>Code</th><th>Programme</th><th>Sector</th><th>Mos.</th>
-          <th><span class="sw a" style="display:inline-block;margin-right:.3rem"></span>A index</th>
-          <th><span class="sw b" style="display:inline-block;margin-right:.3rem"></span>B index</th>
-          <th>Δ</th><th>A /100</th><th>B /100</th><th>Self 0–10</th><th>Q0</th>
-          <th>A time</th><th>B time</th><th>Revis.</th><th>A pts</th><th>B pts</th><th></th>
+          <th>Index</th><th>/100</th><th>Self 0–10</th>
+          <th>Time</th><th>Revis.</th><th>Points</th><th></th>
         </tr></thead>
         <tbody>
           ${rows.map(r => `<tr>
@@ -2415,14 +1772,13 @@ function tabData(rows) {
             <td style="text-align:left">${esc(progShort(r.programme))}</td>
             <td style="text-align:left" class="tiny">${esc(r.bio.industry || '—')}</td>
             <td>${r.bio.months ?? '—'}</td>
-            <td>${r2(r.sim)}</td><td>${r2(r.q12)}</td>
-            <td>${r.delta == null ? '—' : (r.delta > 0 ? '+' : '') + r2(r.delta)}</td>
-            <td>${r0(r.sim100)}</td><td>${r0(r.q12100)}</td>
-            <td>${r.anchor ?? '—'}</td><td>${r.q0 ?? '—'}</td>
-            <td>${mmss(r.simSecs)}</td><td>${mmss(r.q12Secs)}</td>
-            <td>${r.revisions ?? '—'}</td><td>${r.pointsA}</td><td>${r.pointsB}</td>
+            <td>${r2(r.sim)}</td>
+            <td>${r0(r.sim100)}</td>
+            <td>${r.anchor ?? '—'}</td>
+            <td>${mmss(r.simSecs)}</td>
+            <td>${r.revisions ?? '—'}</td><td>${r.points}</td>
             <td><button class="ghost" data-del="${esc(r.id)}" style="font-size:.62rem">Remove</button></td>
-          </tr>`).join('') || `<tr><td colspan="17" style="text-align:center; padding:1.5rem">No runs stored yet.</td></tr>`}
+          </tr>`).join('') || `<tr><td colspan="11" style="text-align:center; padding:1.5rem">No runs stored yet.</td></tr>`}
         </tbody>
       </table>
     </div>`;
@@ -2430,23 +1786,15 @@ function tabData(rows) {
   const itemTable = !rows.length ? '' : `
     <div class="tbl-scroll">
       <table>
-        <thead><tr><th>Station</th><th>Time</th><th>Dimension</th><th>Mirrors</th>
+        <thead><tr><th>Station</th><th>Time</th><th>Dimension</th>
           ${rows.map(r => `<th>${esc(r.code)} raw</th><th>${esc(r.code)} 1–5</th><th>${esc(r.code)} ms</th>`).join('')}
         </tr></thead>
         <tbody>
           ${STATIONS.map((s, i) => `<tr>
-            <td class="k">A${String(i + 1).padStart(2, '0')}</td><td>${esc(s.t)}</td>
+            <td class="k">${String(i + 1).padStart(2, '0')}</td><td>${esc(s.t)}</td>
             <td style="text-align:left" class="tiny">${DIM[s.dim].k} ${esc(DIM[s.dim].name)}</td>
-            <td style="text-align:left" class="tiny">${esc(s.mirrors)}</td>
             ${rows.map(r => { const a = (r.answers || [])[i];
               return `<td>${a ? a.value : '—'}</td><td>${a ? r2(rescale4to5(a.value)) : '—'}</td><td>${a && a.ms ? a.ms : '—'}</td>`; }).join('')}
-          </tr>`).join('')}
-          ${Q12.map(q => `<tr>
-            <td class="k">Q${q.n}</td><td>—</td>
-            <td style="text-align:left" class="tiny">${DIM[q.dim].k} ${esc(DIM[q.dim].name)}</td>
-            <td style="text-align:left" class="tiny">${esc(q.t.slice(0, 46))}…</td>
-            ${rows.map(r => { const v = (r.q12Raw || {})['q' + q.n];
-              return `<td>${v ?? '—'}</td><td>${v == null ? '—' : r2(v)}</td><td>—</td>`; }).join('')}
           </tr>`).join('')}
         </tbody>
       </table>
@@ -2454,8 +1802,8 @@ function tabData(rows) {
 
   return `
     <div class="panel panel-full" style="margin-bottom:1.25rem">
-      <p class="p-eyebrow">Dataset · paired observations</p>
-      <p class="p-title">Mode A and Mode B, one row per respondent</p>
+      <p class="p-eyebrow">Dataset</p>
+      <p class="p-title">One row per respondent</p>
       ${sumTable}
       <div class="btn-row" style="margin-top:1rem">
         <button class="btn btn-2 btn-sm" id="csvSum">Export summary CSV</button>
@@ -2470,8 +1818,8 @@ function tabData(rows) {
 
     <div class="panel panel-full" style="margin-bottom:1.25rem">
       <p class="p-eyebrow">Item level</p>
-      <p class="p-title">Every station and every Q12 item, per respondent</p>
-      <p class="p-q">Mode A raw choices are 1–4 and rescaled to 1–5 as <span class="mono">1 + (raw − 1) × 4/3</span>; Q12 items are already 1–5.</p>
+      <p class="p-title">Every station, per respondent</p>
+      <p class="p-q">Raw choices are 1–4 and rescaled to 1–5 as <span class="mono">1 + (raw − 1) × 4/3</span>.</p>
       ${itemTable || emptyFig('No responses stored yet.')}
     </div>
 
@@ -2479,7 +1827,7 @@ function tabData(rows) {
       <p class="p-eyebrow">Add a respondent</p>
       <p class="p-title">Paste a result code</p>
       <p class="p-q">If a respondent completed the study on a device that could not reach the store,
-      they were given a result code. Paste it here to add their paired observation.</p>
+      they were given a result code. Paste it here to add their run.</p>
       <textarea id="impBox" placeholder="Paste the result code…" style="margin-top:.7rem"></textarea>
       <div class="btn-row" style="margin-top:.7rem">
         <button class="btn btn-2 btn-sm" id="impGo">Import respondent</button>
@@ -2494,15 +1842,15 @@ function tabQual(rows) {
   return `
     <div class="panel panel-full">
       <p class="p-eyebrow">Qualitative capture</p>
-      <p class="p-title">The material the Q12 has no field for</p>
-      <p class="p-q">A 12-item Likert scale returns twelve numbers. The simulation additionally
-      recorded a critical incident in the respondent's own words, an AI-generated follow-up written
-      for their specific answer pattern, and two behavioural outcome items.</p>
+      <p class="p-title">The material a numeric index alone can't carry</p>
+      <p class="p-q">Alongside the twelve station choices, the simulation recorded a critical incident
+      in the respondent's own words, an AI-generated follow-up written for their specific answer
+      pattern, and two behavioural outcome items.</p>
       ${!withText.length ? emptyFig('No free-text responses stored yet.') : withText.map(r => `
         <div style="border-top:1px solid var(--rule); padding:1.1rem 0">
           <div class="row wrap" style="gap:.6rem; margin-bottom:.6rem">
             <span class="chip" aria-pressed="true">${esc(r.code)} · ${esc(progShort(r.programme))}</span>
-            <span class="tiny mono">A ${r2(r.sim)} · B ${r2(r.q12)} · self ${r.anchor ?? '—'}/10</span>
+            <span class="tiny mono">index ${r2(r.sim)} · self ${r.anchor ?? '—'}/10</span>
             <span class="tiny mono">would stay: ${esc(r.stay || '—')} · would recommend: ${esc(r.recommend || '—')}</span>
           </div>
           ${r.incident ? `<p class="eyebrow" style="margin-bottom:.25rem">Critical incident</p>
@@ -2512,8 +1860,7 @@ function tabQual(rows) {
             <p style="font-size:1.02rem; margin-top:.3rem">${r.probeA ? '“' + esc(r.probeA) + '”' : '<span class="tiny">Not answered.</span>'}</p>` : ''}
         </div>`).join('')}
       <p class="p-note">Read against the numbers, this is the argument for real-time measurement in
-      miniature: the index tells you the level, the incident tells you the cause, and only one of the
-      two instruments collected the second.</p>
+      miniature: the index tells you the level, the incident tells you the cause.</p>
     </div>`;
 }
 
@@ -2554,43 +1901,30 @@ const c0 = n => n == null ? '' : String(Math.round(n));
 const q = v => { const s = String(v == null ? '' : v); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
 function csvSummary(rows) {
   const head = ['respondent_code', 'programme', 'is_pilot', 'sector', 'role', 'months_experience', 'team_size',
-    'completed_at', 'mode_a_index_1_5', 'mode_a_index_0_100', 'mode_b_index_1_5', 'mode_b_index_0_100',
-    'delta_a_minus_b', 'self_rating_0_10', 'q0_overall_satisfaction',
-    ...DIMS.map(d => 'a_' + d.id), ...DIMS.map(d => 'b_' + d.id),
-    'mode_a_seconds', 'mode_b_seconds', 'answer_revisions', 'median_latency_ms',
-    'mode_a_data_points', 'mode_b_data_points',
-    ...EXP_ITEMS.map(i => 'exp_sim_' + i.id), ...EXP_ITEMS.map(i => 'exp_q12_' + i.id),
-    'preferred_mode', 'preferred_cadence', 'would_stay', 'would_recommend',
+    'completed_at', 'engagement_index_1_5', 'engagement_index_0_100', 'self_rating_0_10',
+    ...DIMS.map(d => d.id),
+    'seconds_on_task', 'answer_revisions', 'median_latency_ms', 'data_points',
+    'would_stay', 'would_recommend',
     'critical_incident', 'adaptive_probe_question', 'adaptive_probe_answer'];
   const lines = rows.map(r => [r.code, r.programme, r.testRun ? 'yes' : 'no', r.bio.industry, r.bio.role,
-    r.bio.months, r.bio.teamSize, r.completedAt, c2(r.sim), c0(r.sim100), c2(r.q12), c0(r.q12100),
-    r.delta == null ? '' : c2(r.delta), r.anchor, r.q0,
-    ...DIMS.map(d => c2(r.simDims[d.id])), ...DIMS.map(d => c2(r.q12Dims[d.id])),
-    r.simSecs, r.q12Secs, r.revisions, r.medianLatency, r.pointsA, r.pointsB,
-    ...EXP_ITEMS.map(i => (r.exp.sim || {})[i.id]), ...EXP_ITEMS.map(i => (r.exp.q12 || {})[i.id]),
-    r.exp.preferred, r.exp.cadence, r.stay, r.recommend, r.incident, r.probeQ, r.probeA].map(q).join(','));
+    r.bio.months, r.bio.teamSize, r.completedAt, c2(r.sim), c0(r.sim100), r.anchor,
+    ...DIMS.map(d => c2(r.simDims[d.id])),
+    r.simSecs, r.revisions, r.medianLatency, r.points,
+    r.stay, r.recommend, r.incident, r.probeQ, r.probeA].map(q).join(','));
   return [head.join(','), ...lines].join('\n');
 }
 function csvItems(rows) {
-  const head = ['respondent_code', 'programme', 'mode', 'item_id', 'station_time', 'dimension',
-    'mirrors_q12_item', 'item_text', 'chosen_text', 'raw_score', 'scaled_1_5', 'latency_ms', 'revisions'];
+  const head = ['respondent_code', 'programme', 'station_id', 'station_time', 'dimension',
+    'item_text', 'chosen_text', 'raw_score', 'scaled_1_5', 'latency_ms', 'revisions'];
   const out = [];
   rows.forEach(r => {
     STATIONS.forEach((s, i) => {
       const a = (r.answers || [])[i];
       const chosen = a ? (s.opts.find(o => o.v === a.value) || {}).t : '';
-      out.push([r.code, r.programme, 'A_simulation', 'A' + String(i + 1).padStart(2, '0'), s.t,
-        DIM[s.dim].name, s.mirrors, s.prompt, chosen, a ? a.value : '',
+      out.push([r.code, r.programme, String(i + 1).padStart(2, '0'), s.t,
+        DIM[s.dim].name, s.prompt, chosen, a ? a.value : '',
         a ? c2(rescale4to5(a.value)) : '', a ? a.ms : '', a ? a.revisions : ''].map(q).join(','));
     });
-    Q12.forEach(qq => {
-      const v = (r.q12Raw || {})['q' + qq.n];
-      out.push([r.code, r.programme, 'B_gallup_q12', 'Q' + qq.n, '', DIM[qq.dim].name, 'Q' + qq.n,
-        qq.t, '', v ?? '', v == null ? '' : c2(v), '', ''].map(q).join(','));
-    });
-    const v0 = (r.q12Raw || {}).q0;
-    out.push([r.code, r.programme, 'B_gallup_q12', 'Q0', '', 'overall satisfaction', 'Q0', Q0, '',
-      v0 ?? '', v0 == null ? '' : c2(v0), '', ''].map(q).join(','));
   });
   return [head.join(','), ...out].join('\n');
 }
@@ -2613,9 +1947,6 @@ async function deliver(filename, text, msgId) {
 function resumeScreen() {
   if (!run || !run.consent) return renderLanding();
   if (run.completedAt) { run = null; store.del(K_RUN); return renderLanding(); }
-  if (run.b.endedAt) return renderExperience();
-  if (run.b.startedAt) return renderQ12();
-  if (run.a.endedAt) return renderBridge();
   if (run.a.startedAt) {
     const nextIx = run.a.answers.findIndex(a => !a);
     if (nextIx === -1) return renderSimExtras();

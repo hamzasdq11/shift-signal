@@ -98,36 +98,11 @@ async function run(name, width, height, theme) {
   await shot('4-closing');
   await page.click('#doneA');
 
-  // ── bridge + Q12
-  await page.waitForSelector('#go'); await page.click('#go');
-  await page.waitForSelector('.q-item');
-  const items = await page.locator('.q-item').count();
-  out.push(`Q12 items rendered: ${items} (expect 13 incl. Q0) ${items === 13 ? '✓' : '✗'}`);
-  o = await overflow(page); out.push(`Q12: h-scroll ${o.pageScrollX ? 'YES ✗ ' + JSON.stringify(o.bad) : 'no ✓'}`);
-  const lkBox = await page.locator('.q-item .lk').first().boundingBox();
-  out.push(`likert hit target: ${Math.round(lkBox.width)}×${Math.round(lkBox.height)}px ${lkBox.width >= 40 && lkBox.height >= 40 ? '✓' : '✗ too small'}`);
-  await shot('5-q12'); out.push(`rig @Q12: ${(await rigOverlap()) === 'clean' ? 'clean ✓' : '✗ ' + await rigOverlap()}`);
-  for (let i = 0; i < items; i++) {
-    await page.locator('.q-item').nth(i).locator('.lk').nth((i * 2) % 5).click();
-  }
-  const bDone = await page.isDisabled('#doneB');
-  out.push(`Q12 submit unlocks on 13/13: ${bDone ? '✗' : '✓'}`);
-  await page.click('#doneB');
-
-  // ── experience
-  await page.waitForSelector('[data-exp]');
-  const expRows = await page.locator('[data-exp]').count();
-  for (let i = 0; i < expRows; i++) await page.locator('[data-exp]').nth(i).locator('.lk').nth((i + 2) % 5).click();
-  await page.locator('#pref button').nth(0).click();
-  await page.locator('#cad button').nth(1).click();
-  out.push(`experience block: ${expRows} rows (expect 8) ${expRows === 8 ? '✓' : '✗'}`);
-  await page.click('#submit');
-
   // ── receipt
   await page.waitForSelector('.score-big');
   const scores = await page.locator('.score-big').allTextContents();
   const codeLen = (await page.locator('#codeBox').textContent()).length;
-  out.push(`receipt: scores ${scores.join(' / ')} · result code ${codeLen} chars ✓`);
+  out.push(`receipt: score ${scores.join(' / ')} · result code ${codeLen} chars ✓`);
   o = await overflow(page); out.push(`receipt: h-scroll ${o.pageScrollX ? 'YES ✗ ' + JSON.stringify(o.bad) : 'no ✓'}`);
   const figs = await page.locator('#stage svg.viz').count();
   out.push(`receipt figures: ${figs}`);
@@ -184,7 +159,7 @@ async function run(name, width, height, theme) {
   out.push(`qualitative tab: ${(await page.locator('#stage').textContent()).includes('biggest account') ? 'incident shown ✓' : '✗ incident missing'}`);
   await shot('9-qual');
 
-  // coverage strip + recommendations on the comparison tab
+  // coverage strip + recommendations on the results tab
   await page.locator('.tab').nth(0).click();
   await page.waitForTimeout(400);
   const cov = await page.locator('.cover-cell').count();
